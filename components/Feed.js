@@ -23,7 +23,7 @@ const Feed = () => {
             </div>
           </section>
         </>
-      ) : (<h1 className="col-span-3 flex m-auto text-lg font-bold italic mt-5 text-gray-400">Please SignIn</h1>)}
+      ) : (<h1 className="col-span-3 flex m-auto text-lg font-bold italic mt-20 text-gray-400">Please SignIn</h1>)}
     </main>
   )
 }

@@ -16,7 +16,7 @@ const Header = () => {
     const [open, setOpen] = useRecoilState(modelState);
     const router = useRouter();
     return (
-        <div className="shadow-sm border-b bg-white sticky top-0 z-50">
+        <div className="shadow-sm border-b bg-white sticky top-0 py-2 z-50">
             <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
                 {/* Header */}
                 <div className="relative hidden lg:inline-grid w-24 cursor-pointer">
@@ -27,7 +27,7 @@ const Header = () => {
                         objectFit="contain"
                     />
                 </div>
-                <div className="relative w-8 lg:hidden flex-shrink-0 cursor-pointer">
+                <div className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
                     <Image
                         onClick={() => router.push('/')}
                         src='https://links.papareact.com/jjm'
@@ -38,11 +38,11 @@ const Header = () => {
 
                 {/* Search */}
                 <div className="max-w-xs">
-                    <div className="mt-1 md:mt-2 relative p-1 md:p-3 rounded-md">
+                    <div className="mt-1 relative p-3 rounded-md">
                         <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
                             <SearchIcon className='h-5 w-5 text-gray-500' />
                         </div>
-                        <input className="bg-gray-50 block w-full pl-10 sm:text-sm border-gray-200 focus:ring-gray-200 focus:border-gray-200  rounded-md" placeholder="search.." type='text' />
+                        <input className="hidden bg-gray-50 md:block w-full pl-10 sm:text-sm border-gray-200 focus:ring-gray-200 focus:border-gray-200  rounded-md" placeholder="search.." type='text' />
                     </div>
                 </div>
 
