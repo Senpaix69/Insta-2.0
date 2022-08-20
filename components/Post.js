@@ -96,7 +96,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
             {comments.length > 0 && (
                 <div className='ml-5 h-20 overflow-y-scroll scrollbar-thumb-gray-300 scrollbar-thin'>
                     {comments.map((comment) => (
-                        <div key={comment.id} className='flex items-center space-x-2 mb-1'>
+                        <div key={comment.id} className='flex items-center space-x-2 mb-3'>
                             <img
                                 className='h-7 rounded-full'
                                 src={comment.data().userImg}
@@ -115,7 +115,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
             )}
 
 
-            <form className='flex items-center p-4'>
+            <form className='flex items-center py-2 px-4'>
                 <EmojiHappyIcon className='h-7' />
                 <input value={comment} onChange={(e) => setComment(e.target.value)} className='border-none flex-1 outline-none focus:ring-0' placeholder='add a comment...' type='text' />
                 <button type='submit' disabled={!comment.trim()} onClick={postComment} className='font-semibold text-blue-500 disabled:text-gray-400'>Post</button>
