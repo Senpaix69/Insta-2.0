@@ -6,10 +6,10 @@ const signIn = ({ providers }) => {
     return (
         <>
             <Header />
-            <div className='flex flex-col items-center justify-cente mt-20 text-center'>
-                <img className='w-80' src='https://links.papareact.com/ocw' alt='Instagram' />
-                <p className='font-xs italic'>This app is made with next.js and backend firebase by SENPAI</p>
-                <div className='mt-40'>
+            <div className='flex flex-col items-center justify-cente mt-[170px] text-center'>
+                <img className='w-[350px] md:w-80' src='https://links.papareact.com/ocw' alt='Instagram' />
+                <p className='font-xs italic text-gray-400'>This app is made with next.js and backend firebase by SENPAI</p>
+                <div className='mt-20'>
                     {Object.values(providers).map((provider) => (
                         <div key={provider.name}>
                             <button className='p-4 bg-blue-500 text-white rounded-lg' onClick={() => signInto(provider.id, { callbackUrl: '/' })}>

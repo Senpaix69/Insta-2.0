@@ -42,7 +42,7 @@ const Header = () => {
                         <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
                             <SearchIcon className='h-5 w-5 text-gray-500' />
                         </div>
-                        <input className="bg-gray-50 block w-full pl-10 sm:text-sm border-gray focus:ring-black focus:border-black rounded-md" placeholder="search.." type='text' />
+                        <input className="bg-gray-50 block w-full pl-10 sm:text-sm border-gray-200 focus:ring-gray-200 focus:border-gray-200  rounded-md" placeholder="search.." type='text' />
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@ const Header = () => {
                         <>
                             <div className="relative navBtn">
                                 <PaperAirplaneIcon className="navBtn rotate-45" />
-                                <div className="absolute -top-2 -right-2 text-xs w-5 h-5 bg-red-500 flex items-center justify-center rounded-full animate-pulse text-white">3</div>
+                                <div className="absolute -top-2 -right-2 text-xs w-5 h-5 bg-red-500 flex items-center justify-center rounded-full animate-pulse text-white">50</div>
                             </div>
                             <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
                             <UserGroupIcon className="navBtn" />
