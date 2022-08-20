@@ -27,7 +27,6 @@ const Model = () => {
             profImg: session.user.image,
             timeStamp: serverTimestamp()
         });
-        console.log(docRef.id);
         
         const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
@@ -57,7 +56,7 @@ const Model = () => {
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' onClose={setOpen}>
-                <div className='flex items-end justify-center min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
+                <div className='flex items-end justify-center min-h-[600px] md:min-h-[600px] pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
                     <Transition.Child
                         as={Fragment}
                         enter='ease-out duration-300'
