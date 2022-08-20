@@ -8,9 +8,9 @@ function classNames(...classes) {
 
 export default function Example({ session, setOpen, signOut }) {
     return (
-        <Menu as="div" className="relative inline-block text-left md:hidden">
+        <Menu as="div" className="relative inline-block text-left md:hidden pt-2">
             <Menu.Button>
-                <img src={session?.user?.image} alt='Profile Pic' className="h-9 w-9 rounded-full cursor-pointer btn" />
+                <img src={session?.user?.image} alt='Profile Pic' className="h-10 w-10 rounded-full cursor-pointer btn" />
             </Menu.Button>
 
             <Transition
