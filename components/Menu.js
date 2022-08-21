@@ -59,7 +59,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                         'block px-4 py-2 text-sm w-full'
                                     )}
                                 >
-                                    Chats
+                                    Chats [In working]
                                 </button>
                             )}
                         </Menu.Item>
