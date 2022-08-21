@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MiniProfile from "./MiniProfile";
 import Posts from "./Posts";
 import Stories from "./Stories";
@@ -23,8 +24,21 @@ const Feed = () => {
             </div>
           </section>
         </>
-      ) : (<h1 onClick={signIn} className="bg-gray-100 shadow-lg px-2 py-1 border rounded-lg col-span-3 flex m-auto text-lg font-bold italic mt-20 text-gray-600 cursor-pointer hover:text-blue-500">Please SignIn</h1>)}
-    </main>
+      ) : (
+        <div className="flex flex-col m-auto col-span-3 items-center mt-20 shadow-lg border rounded-lg w-2/3 md:w-1/2 md:h-full p-20">
+          <div className="relative w-52 h-52">
+            <Image
+              onClick={() => router.push('/')}
+              src='https://links.papareact.com/jjm'
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <h6 className="px-2 py-1 text-sm font-bold italic mt-10 text-gray-600">Welcome To Insta-2.0</h6>
+          <h1 onClick={signIn} className="p-2 bg-blue-400 shadow-lg px-2 border rounded-lg text-lg font-bold italic mt-2 text-white cursor-pointer hover:text-blue-500 hover:bg-gray-50">Please SignIn</h1>
+        </div>
+      )}
+    </main >
   )
 }
 

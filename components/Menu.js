@@ -67,7 +67,6 @@ export default function Example({ session, setOpen, signOut, router }) {
                         <Menu.Item>
                             {({ active }) => (
                                 <button
-                                    type="submit"
                                     onClick={signOut}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
