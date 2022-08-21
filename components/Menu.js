@@ -28,6 +28,18 @@ export default function Example({ session, setOpen, signOut, router }) {
                         <Menu.Item>
                             {({ active }) => (
                                 <button
+                                    className={classNames(
+                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        'block px-4 py-2 text-sm w-full'
+                                    )}
+                                >
+                                    Profile [Not Active]
+                                </button>
+                            )}
+                        </Menu.Item>
+                        <Menu.Item>
+                            {({ active }) => (
+                                <button
                                     onClick={() => setOpen(true)}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
@@ -63,7 +75,6 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 </button>
                             )}
                         </Menu.Item>
-
                         <Menu.Item>
                             {({ active }) => (
                                 <button
