@@ -27,43 +27,40 @@ export default function Example({ session, setOpen, signOut, router }) {
                     <div className="py-1">
                         <Menu.Item>
                             {({ active }) => (
-                                <a
+                                <button
                                     onClick={() => setOpen(true)}
-                                    href="#"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm'
+                                        'block px-4 py-2 text-sm w-full'
                                     )}
                                 >
                                     Add Post
-                                </a>
+                                </button>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <a
+                                <button
                                     onClick={() => router.push('/Chat')}
-                                    href="#"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm'
+                                        'block px-4 py-2 text-sm w-full'
                                     )}
                                 >
                                     Chats
-                                </a>
+                                </button>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="#"
+                                <button
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm'
+                                        'block px-4 py-2 text-sm w-full'
                                     )}
                                 >
                                     Support [Not Active]
-                                </a>
+                                </button>
                             )}
                         </Menu.Item>
 
@@ -74,7 +71,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                     onClick={signOut}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block w-full text-left px-4 py-2 text-sm'
+                                        'block w-full px-4 py-2 text-sm'
                                     )}
                                 >
                                     Sign out
