@@ -65,11 +65,11 @@ const Post = ({ id, username, userImg, img, caption }) => {
 
     return (
         <div className='bg-white border rounded-sm my-2'>
-            <div className='flex items-center py-1 px-3'>
+            <div className='flex items-center py-1 px-[5px]'>
                 <img className='rounded-full h-12 w-12 object-contain border p-1 mr-3'
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
-                <DotsHorizontalIcon className='h-5' />
+                <DotsHorizontalIcon className='h-5 mr-2' />
             </div>
 
             <img className='w-full max-h-[500px] object-scale-down'
