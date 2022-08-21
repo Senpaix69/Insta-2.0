@@ -7,7 +7,7 @@ import {
     PaperAirplaneIcon
 } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
-import { addDoc, doc, collection, serverTimestamp, updateDoc, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
+import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { db } from '../firebase';
@@ -65,7 +65,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
 
     return (
         <div className='bg-white border rounded-sm my-2'>
-            <div className='flex items-center p-5'>
+            <div className='flex items-center py-1 px-3'>
                 <img className='rounded-full h-12 w-12 object-contain border p-1 mr-3'
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
@@ -77,7 +77,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
 
             <div className='flex justify-between px-4 pt-4'>
                 <div className='flex space-x-4'>
-                    {hasLike ? <HeartIconFilled onClick={likePost} className='btn' />
+                    {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
                         : <HeartIcon onClick={likePost} className='btn' />}
                     <ChatIcon className='btn' />
                     <PaperAirplaneIcon className='btn rotate-90' />
@@ -85,7 +85,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
                 <BookmarkIcon className='btn' />
             </div>
 
-            <p className='px-5 py-2 truncate'>
+            <p className='px-5 py-2'>
                 {likes.length > 0 && (
                     <p className='font-bold mb-1'>{likes.length} {likes.length === 1 ? "like" : "likes"}</p>
                 )}
