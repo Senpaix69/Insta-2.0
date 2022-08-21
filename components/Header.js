@@ -23,6 +23,7 @@ const Header = () => {
                     {/* Header */}
                     <div className="relative hidden lg:inline-grid w-24 cursor-pointer">
                         <Image
+                            priority
                             onClick={() => router.push('/')}
                             src='https://links.papareact.com/ocw'
                             layout="fill"
@@ -31,6 +32,7 @@ const Header = () => {
                     </div>
                     <div className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
                         <Image
+                            priority
                             onClick={() => router.push('/')}
                             src='https://links.papareact.com/jjm'
                             layout="fill"

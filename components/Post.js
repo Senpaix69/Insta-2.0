@@ -90,7 +90,7 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
 
             <p className='px-5 py-2'>
                 {likes.length > 0 && (
-                    <p className='font-bold mb-1'>{likes.length} {likes.length === 1 ? "like" : "likes"}</p>
+                    <span className='font-bold mb-1 flex'>{likes.length} {likes.length === 1 ? "like" : "likes"}</span>
                 )}
                 <span className='font-bold mr-1'>{username} </span>{caption}
             </p>
