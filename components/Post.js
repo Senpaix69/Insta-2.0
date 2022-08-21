@@ -67,7 +67,7 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
 
     return (
         <div className='bg-white border rounded-sm my-2 shadow-md'>
-            <div className='flex items-center py-1 px-[5px] shadow-sm'>
+            <div className='flex items-center py-1 px-[5px] shadow-md'>
                 <img className='rounded-full h-12 w-12 object-contain border p-1 mr-3'
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
@@ -88,7 +88,7 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
                 <BookmarkIcon className='btn' />
             </div>
 
-            <p className='px-5 py-2'>
+            <p className='px-5 py-2 shadow-sm'>
                 {likes.length > 0 && (
                     <span className='font-bold mb-1 flex'>{likes.length} {likes.length === 1 ? "like" : "likes"}</span>
                 )}
