@@ -95,7 +95,6 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
                 <span className='font-bold mr-1'>{username} </span>{caption}
             </p>
 
-            {/* comments */}
             {comments.length > 0 && (
                 <div className='ml-5 h-20 overflow-y-scroll scrollbar-thumb-gray-300 scrollbar-thin'>
                     {comments.map((comment) => (
