@@ -35,7 +35,7 @@ const Feed = () => {
             />
           </div>
           <h6 className="px-2 py-1 text-sm font-bold italic mt-10 text-gray-600">Welcome To Insta-2.0</h6>
-          <h1 onClick={signIn} className="p-2 bg-blue-400 shadow-lg px-2 border rounded-lg text-lg font-bold italic mt-2 text-white cursor-pointer hover:text-blue-500 hover:bg-gray-50">Please SignIn</h1>
+          <h1 onClick={signIn} className="p-2 px-3 bg-blue-400 shadow-lg border rounded-lg text-lg font-bold italic mt-2 text-white cursor-pointer hover:text-blue-500 hover:bg-gray-50">Go To SignIn Page</h1>
         </div>
       )}
     </main >
