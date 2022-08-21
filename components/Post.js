@@ -1,20 +1,18 @@
 import {
     BookmarkIcon,
     ChatIcon,
-    DotsHorizontalIcon,
     EmojiHappyIcon,
+    DotsHorizontalIcon,
     HeartIcon,
     PaperAirplaneIcon
 } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
 import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
 import { db } from '../firebase';
 import Moment from 'react-moment';
 
-const Post = ({ id, username, userImg, img, caption }) => {
-    const { data: session } = useSession();
+const Post = ({ id, username, userImg, img, caption, session }) => {
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
     const [likes, setLikes] = useState([]);
@@ -34,7 +32,6 @@ const Post = ({ id, username, userImg, img, caption }) => {
         [db, id]
     );
 
-
     useEffect(() => setHasLike
         (likes.findIndex((like) => like.id === session?.user?.uid) !== -1),
         [likes]
@@ -48,6 +45,11 @@ const Post = ({ id, username, userImg, img, caption }) => {
                 username: session.user.username,
             });
         }
+    };
+
+    const deletePost = async () => {
+        if (confirm("Do You really want to delete this post?"))
+            await deleteDoc(doc(db, "posts", id));
     };
 
     const postComment = async (e) => {
@@ -64,12 +66,13 @@ const Post = ({ id, username, userImg, img, caption }) => {
     }
 
     return (
-        <div className='bg-white border rounded-sm my-2'>
-            <div className='flex items-center py-1 px-[5px]'>
+        <div className='bg-white border rounded-sm my-2 shadow-md'>
+            <div className='flex items-center py-1 px-[5px] shadow-sm'>
                 <img className='rounded-full h-12 w-12 object-contain border p-1 mr-3'
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
-                <DotsHorizontalIcon className='h-5 mr-2' />
+                {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
+                    <DotsHorizontalIcon className='btn pr-3' />}
             </div>
 
             <img className='w-full max-h-[500px] object-scale-down'
