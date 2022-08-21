@@ -25,7 +25,7 @@ const Feed = () => {
           </section>
         </>
       ) : (
-        <div className="flex flex-col m-auto col-span-3 items-center mt-20 shadow-lg border rounded-lg w-2/3 md:w-1/2 md:h-full p-20">
+        <div className="flex flex-col m-auto col-span-3 items-center mt-20 shadow-lg border rounded-lg w-full md:w-1/2 h-full p-20">
           <div className="relative w-52 h-52">
             <Image
               onClick={() => router.push('/')}
