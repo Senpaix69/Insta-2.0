@@ -16,7 +16,7 @@ const Chat = () => {
     }
 
     return (
-        <div className='scrollbar-hide'>
+        <div className='h-screen overflow-y-scroll scrollbar-hide'>
             {session && (
                 <div className='flex flex-col justify-between max-w-6xl md:mx-5 lg:mx-auto'>
                     <Header />

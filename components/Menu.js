@@ -66,7 +66,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                         <Menu.Item>
                             {({ active }) => (
                                 <button
-                                    onClick={() => router.push('/Chat')}
+                                    onClick={() => router.push('/Chats')}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-[7px] text-sm w-full'

@@ -52,7 +52,7 @@ const Header = () => {
                         <div className="md:flex hidden items-center space-x-4 justify-end">
                             <HomeIcon onClick={() => router.push('/')} className="navBtn" />
                             <div className="relative navBtn">
-                                <PaperAirplaneIcon onClick={() => router.push('/Chat')} className="navBtn rotate-45" />
+                                <PaperAirplaneIcon onClick={() => router.push('/Chats')} className="navBtn rotate-45" />
                                 <div className="absolute -top-2 -right-2 text-xs w-5 h-5 bg-red-500 flex items-center justify-center rounded-full animate-pulse text-white">5</div>
                             </div>
                             <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
