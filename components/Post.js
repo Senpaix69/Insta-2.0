@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Moment from 'react-moment';
 
-const Post = ({ id, username, userImg, img, caption, session }) => {
+const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
     const [likes, setLikes] = useState([]);
@@ -71,6 +71,9 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
                 <img className='rounded-full h-12 w-12 object-contain border p-1 mr-3'
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
+                <Moment fromNow className='pr-5 text-sm text-gray-400'>
+                    {timeStamp.toDate()}
+                </Moment>
                 {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
@@ -92,7 +95,8 @@ const Post = ({ id, username, userImg, img, caption, session }) => {
                 {likes.length > 0 && (
                     <span className='font-bold mb-1 flex'>{likes.length} {likes.length === 1 ? "like" : "likes"}</span>
                 )}
-                <span className='font-bold mr-1'>{username} </span>{caption}
+                <span className='font-bold mr-1'>{username} </span>
+                <span className='text-sm'>{caption}</span>
             </p>
 
             {comments.length > 0 && (

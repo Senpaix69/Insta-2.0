@@ -28,9 +28,22 @@ export default function Example({ session, setOpen, signOut, router }) {
                         <Menu.Item>
                             {({ active }) => (
                                 <button
+                                    onClick={() => router.push('/')}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm w-full'
+                                        'block px-4 py-[7px] text-sm w-full'
+                                    )}
+                                >
+                                    Home
+                                </button>
+                            )}
+                        </Menu.Item>
+                        <Menu.Item>
+                            {({ active }) => (
+                                <button
+                                    className={classNames(
+                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        'block px-4 py-[7px] text-sm w-full'
                                     )}
                                 >
                                     Profile [Not Active]
@@ -43,7 +56,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                     onClick={() => setOpen(true)}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm w-full'
+                                        'block px-4 py-[7px] text-sm w-full'
                                     )}
                                 >
                                     Add Post
@@ -56,7 +69,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                     onClick={() => router.push('/Chat')}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm w-full'
+                                        'block px-4 py-[7px] text-sm w-full'
                                     )}
                                 >
                                     Chats [In working]
@@ -68,7 +81,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 <button
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-2 text-sm w-full'
+                                        'block px-4 py-[7px] text-sm w-full'
                                     )}
                                 >
                                     Support [Not Active]
@@ -81,7 +94,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                     onClick={signOut}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block w-full px-4 py-2 text-sm'
+                                        'block w-full px-4 py-[7px] text-sm'
                                     )}
                                 >
                                     Sign out

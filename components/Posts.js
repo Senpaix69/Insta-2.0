@@ -29,6 +29,7 @@ const Posts = () => {
                     userImg={post.data().profImg}
                     img={post.data().image}
                     caption={post.data().caption}
+                    timeStamp={post.data().timeStamp}
                 />
             ))}
         </div>
