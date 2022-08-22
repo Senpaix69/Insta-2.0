@@ -16,9 +16,9 @@ const Chat = () => {
     }
 
     return (
-        <div>
+        <div className='scrollbar-hide'>
             {session && (
-                <div>
+                <div className='flex flex-col justify-between max-w-6xl md:mx-5 lg:mx-auto'>
                     <Header />
                     <div className='bg-gray-500 flex items-center justify-center h-screen'>
                         <button className='m-56 font-bold text-white hover:text-black'>
