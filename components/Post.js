@@ -83,7 +83,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                 {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
-            <div className='relative w-full h-[500px]'>
+            <div className='relative w-full h-[400px] md:h-[500px]'>
                 <Image
                     layout='fill'
                     objectFit='scale-down'
