@@ -40,7 +40,7 @@ const Chat = () => {
                     <Header />
                     <div className='bg-gray-100 flex justify-center h-full'>
                         <div className='flex flex-col shadow-md md:w-[700px] w-full bg-white'>
-                            <div className='w-full flex text-lg justify-center items-center p-5 mb-2 shadow-md'>
+                            <div className='w-full flex text-lg justify-center items-center p-3 mb-2 shadow-md'>
                                 <h1 className='font-bold'>{session.user.username}</h1>
                             </div>
                             <p className='font-bold ml-5 mb-2'>Messages</p>
