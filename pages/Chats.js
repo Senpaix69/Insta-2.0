@@ -62,7 +62,7 @@ const Chat = () => {
                             <p className='font-bold ml-5'>Messages</p>
                             <div>
                                 {chats.map(chat => (
-                                    <div className='flex items-center w-full py-1 px-3 mt-1 cursor-pointer truncate'>
+                                    <div key={chat.id} className='flex items-center w-full py-1 px-3 mt-1 cursor-pointer truncate'>
                                         <img className='w-12 h-12 rounded-full' src={chat.userImg} />
                                         <div className='ml-3 w-full truncate'>
                                             <h1 className='font-semibold'>{chat.username}</h1>
