@@ -8,8 +8,6 @@ function classNames(...classes) {
 
 export default function Example({ session, setOpen, signOut, router }) {
 
-    console.log(router.asPath === '/Chats');
-
     return (
         <Menu as="div" className="relative inline-block text-left md:hidden pt-2">
             <Menu.Button>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
 import { faker } from '@faker-js/faker';
+import Login from './login';
 
 const Chat = () => {
     const { data: session } = useSession();
@@ -22,7 +23,7 @@ const Chat = () => {
 
     return (
         <div className='h-screen overflow-y-scroll scrollbar-hide'>
-            {session && (
+            {session ? (
                 <div className='flex flex-col justify-between max-w-6xl md:mx-5 lg:mx-auto'>
                     <Header />
                     <div className='bg-gray-100 flex justify-center h-full'>
@@ -52,7 +53,7 @@ const Chat = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            ) : <Login />}
         </div>
     )
 }
