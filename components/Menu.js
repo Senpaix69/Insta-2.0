@@ -51,7 +51,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 </button>
                             )}
                         </Menu.Item>
-                        {router.asPath !== '/chats' &&
+                        {router.asPath !== '/Chats' &&
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
@@ -65,11 +65,11 @@ export default function Example({ session, setOpen, signOut, router }) {
                                     </button>
                                 )}
                             </Menu.Item>}
-                        {router.asPath !== '/chats' &&
+                        {router.asPath !== '/Chats' &&
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
-                                        onClick={() => router.push('/chats')}
+                                        onClick={() => router.push('/Chats')}
                                         className={classNames(
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                             'block px-4 py-[8px] text-sm w-full'
@@ -91,7 +91,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 </button>
                             )}
                         </Menu.Item>
-                        {router.asPath !== '/chats' &&
+                        {router.asPath !== '/Chats' &&
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
