@@ -69,9 +69,13 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
 
     return (
         <div className='bg-white border rounded-sm my-2 shadow-md'>
-            <div className='flex items-center md:py-1 px-[5px] shadow-md'>
-                <img className='rounded-full h-11 w-11 object-contain border p-1 mr-3'
-                    src={userImg} alt='' />
+            <div className='flex items-center py-2 px-[5px] shadow-md'>
+                <div className='relative rounded-full h-11 w-11 border mr-3'>
+                    <Image
+                        layout='fill'
+                        className='rounded-full'
+                        src={userImg} alt='img' />
+                </div>
                 <p className='flex-1 font-bold'> {username} </p>
                 <Moment fromNow className='pr-5 text-xs text-gray-400'>
                     {timeStamp?.toDate()}
