@@ -28,6 +28,7 @@ const Feed = () => {
         <div className="flex flex-col m-auto col-span-3 items-center mt-20 shadow-lg border rounded-lg w-full md:w-1/2 h-full p-20">
           <div className="relative w-52 h-52">
             <Image
+              alt="img"
               onClick={() => router.push('/')}
               src='https://links.papareact.com/jjm'
               layout="fill"
