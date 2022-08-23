@@ -16,7 +16,7 @@ const Chat = ({ username, userImg, timeStamp, setActiveChatID }) => {
                     />
                     <div>
                         <h1 className="font-bold text-lg h-[24px]">{username}</h1>
-                        <Moment fromNow className="ml-1 text-sm text-gray-400">
+                        <Moment fromNow className="text-xs md:text-sm text-gray-400">
                             <p>{timeStamp}</p>
                         </Moment>
                     </div>
