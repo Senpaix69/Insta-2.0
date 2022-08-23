@@ -12,11 +12,12 @@ const signIn = ({ providers }) => {
                         layout='fill'
                         src='https://links.papareact.com/ocw' alt='Instagram' />
                 </div>
-                <p className='font-xs italic text-gray-400'>Made By Senpai</p>
+                <p className='font-xs italic text-gray-500'>Made By Senpai</p>
                 <div className='mt-20'>
                     {Object.values(providers).map((provider) => (
                         <div key={provider.name}>
-                            <button className='p-4 bg-blue-500 text-white rounded-lg' onClick={() => signInto(provider.id, { callbackUrl: '/' })}>
+                            <button className='p-3 bg-blue-500 text-white rounded-lg hover:bg-gray-100 font-semibold hover:text-blue-500 shadow-lg border' onClick={() => signInto(provider.id, { callbackUrl: '/' })}>
+
                                 Sign in with {provider.name}
                             </button>
                         </div>

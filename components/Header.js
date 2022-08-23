@@ -60,7 +60,7 @@ const Header = () => {
                             <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
                             <UserGroupIcon className="navBtn" />
                             <HeartIcon className="navBtn" />
-                            <img onClick={signOut} src={session.user?.image} alt='Profile Pic' className="h-8 w-8 rounded-full cursor-pointer" />
+                            <img src={session.user?.image} alt='Profile Pic' className="h-8 w-8 rounded-full cursor-pointer" />
                         </div>
                     </div>
                 </div>
