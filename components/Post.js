@@ -23,18 +23,18 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
             onSnapshot(collection(db, "posts", id, "likes"),
                 (snapshot) => setLikes(snapshot.docs)
             ),
-        [db, id])
+        [id])
 
     useEffect(
         () =>
             onSnapshot(query(collection(db, "posts", id, "comments"), orderBy("timeStamp", 'desc')), (snapshot) => setComments(snapshot.docs)
             ),
-        [db, id]
+        [id]
     );
 
     useEffect(() => setHasLike
         (likes.findIndex((like) => like.id === session?.user?.uid) !== -1),
-        [likes]
+        [likes, session?.user?.uid]
     );
 
     const likePost = async () => {

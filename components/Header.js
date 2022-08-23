@@ -23,6 +23,7 @@ const Header = () => {
                     {/* Header */}
                     <div className="relative hidden lg:inline-grid w-24">
                         <Image
+                            alt="img"
                             src='https://links.papareact.com/ocw'
                             layout="fill"
                             objectFit="contain"
@@ -30,6 +31,7 @@ const Header = () => {
                     </div>
                     <div className="relative w-10 lg:hidden flex-shrink-0">
                         <Image
+                            alt="img"
                             src='https://links.papareact.com/jjm'
                             layout="fill"
                             objectFit="contain"
