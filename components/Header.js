@@ -17,7 +17,7 @@ const Header = () => {
     const [open, setOpen] = useRecoilState(modelState);
     const router = useRouter();
     return (
-        <div className="shadow-sm border-b bg-white sticky top-0 py-2 z-50">
+        <div className="shadow-sm border-b bg-white sticky top-0 py-2 md:p-2 z-50">
             {session && (
                 <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
                     {/* Header */}

@@ -1,12 +1,12 @@
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
 import { faker } from '@faker-js/faker';
 import Login from './login';
 import Chat from '../components/Chat';
 
-const chat = () => {
+const Chats = () => {
     const { data: session } = useSession();
     const [chats, setChats] = useState([]);
     const [activeChatID, setActiveChatID] = useState(-1);
@@ -81,4 +81,4 @@ const chat = () => {
     )
 }
 
-export default chat;
+export default Chats;
