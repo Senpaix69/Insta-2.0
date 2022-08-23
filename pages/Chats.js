@@ -37,7 +37,7 @@ const Chat = () => {
                             <div>
                                 {chats?.map(chat => (
                                     <div key={chat.id} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
-                                        <img className='w-12 h-12 rounded-full' alt='chat' src={chat.userImg} />
+                                        <img className='w-12 h-12 rounded-full border p-0.5' alt='chat' src={chat.userImg} />
                                         <div className='ml-3 w-full truncate'>
                                             <h1 className='font-semibold'>{chat.username}</h1>
                                             <div className='flex text-sm w-full justify-between items-center pr-2'>
