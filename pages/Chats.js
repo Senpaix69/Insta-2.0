@@ -2,27 +2,17 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
-import Loading from '../components/Loading';
 import Moment from 'react-moment';
 import { faker } from '@faker-js/faker';
 
 
 const Chat = () => {
     const { data: session } = useSession();
-    const router = useRouter();
-    if (!session) {
-        console.log("Logout")
-        setTimeout(() => {
-            router.push('/');
-        }, 1000);
-        return <Loading />
-    }
-
     const [chats, setChats] = useState([]);
 
 
     useEffect(() => {
-        const suggestions = [...Array(20)].map((_, i) => ({
+        const suggestions = [...Array(25)].map((_, i) => ({
             username: faker.internet.userName(),
             email: faker.internet.email(),
             userImg: faker.image.avatar(),
@@ -45,7 +35,7 @@ const Chat = () => {
                             </div>
                             <p className='font-bold ml-5 mb-2'>Messages</p>
                             <div>
-                                {chats.map(chat => (
+                                {chats?.map(chat => (
                                     <div key={chat.id} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
                                         <img className='w-12 h-12 rounded-full' alt='chat' src={chat.userImg} />
                                         <div className='ml-3 w-full truncate'>
