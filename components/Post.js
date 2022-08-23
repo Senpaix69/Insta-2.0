@@ -72,7 +72,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                     src={userImg} alt='' />
                 <p className='flex-1 font-bold'> {username} </p>
                 <Moment fromNow className='pr-5 text-xs text-gray-400'>
-                    {timeStamp.toDate()}
+                    {timeStamp?.toDate()}
                 </Moment>
                 {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
                     <DotsHorizontalIcon className='btn pr-3' />}
