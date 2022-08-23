@@ -8,6 +8,8 @@ function classNames(...classes) {
 
 export default function Example({ session, setOpen, signOut, router }) {
 
+    console.log(router.asPath === '/Chats');
+
     return (
         <Menu as="div" className="relative inline-block text-left md:hidden pt-2">
             <Menu.Button>
@@ -25,82 +27,86 @@ export default function Example({ session, setOpen, signOut, router }) {
             >
                 <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
+                    { router.asPath !== '/' &&
                         <Menu.Item>
                             {({ active }) => (
                                 <button
                                     onClick={() => router.push('/')}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[7px] text-sm w-full'
+                                        'block px-4 py-[8px] text-sm w-full'
                                     )}
                                 >
                                     Home
                                 </button>
                             )}
-                        </Menu.Item>
+                        </Menu.Item>}
                         <Menu.Item>
                             {({ active }) => (
                                 <button
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[7px] text-sm w-full'
+                                        'block px-4 py-[8px] text-sm w-full'
                                     )}
                                 >
                                     Profile [Not Active]
                                 </button>
                             )}
                         </Menu.Item>
+                        {router.asPath !== '/Chats' &&
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => setOpen(true)}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block px-4 py-[8px] text-sm w-full'
+                                        )}
+                                    >
+                                        Add Post
+                                    </button>
+                                )}
+                            </Menu.Item>}
+                        {router.asPath !== '/Chats' &&
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => router.push('/Chats')}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block px-4 py-[8px] text-sm w-full'
+                                        )}
+                                    >
+                                        Chats [In working]
+                                    </button>
+                                )}
+                            </Menu.Item>}
                         <Menu.Item>
                             {({ active }) => (
                                 <button
-                                    onClick={() => setOpen(true)}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[7px] text-sm w-full'
-                                    )}
-                                >
-                                    Add Post
-                                </button>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    onClick={() => router.push('/Chats')}
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[7px] text-sm w-full'
-                                    )}
-                                >
-                                    Chats [In working]
-                                </button>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[7px] text-sm w-full'
+                                        'block px-4 py-[8px] text-sm w-full'
                                     )}
                                 >
                                     Support [Not Active]
                                 </button>
                             )}
                         </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    onClick={signOut}
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block w-full px-4 py-[7px] text-sm'
-                                    )}
-                                >
-                                    Sign out
-                                </button>
-                            )}
-                        </Menu.Item>
+                        {router.asPath !== '/Chats' &&
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={signOut}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block w-full px-4 py-[8px] text-sm'
+                                        )}
+                                    >
+                                        Sign out
+                                    </button>
+                                )}
+                            </Menu.Item>}
                     </div>
                 </Menu.Items>
             </Transition>

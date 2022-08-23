@@ -1,15 +1,12 @@
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
 import { faker } from '@faker-js/faker';
 
-
 const Chat = () => {
     const { data: session } = useSession();
     const [chats, setChats] = useState([]);
-
 
     useEffect(() => {
         const suggestions = [...Array(25)].map((_, i) => ({
