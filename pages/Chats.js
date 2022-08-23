@@ -30,7 +30,7 @@ const Chats = () => {
 
     useEffect(() => {
         setActiveChat(chats[activeChatID]);
-    }, [activeChatID]);
+    }, [activeChatID, chats]);
 
     return (
         <>
