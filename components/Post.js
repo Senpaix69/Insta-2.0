@@ -6,6 +6,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon
 } from '@heroicons/react/outline';
+import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
 import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -48,8 +49,9 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
     };
 
     const deletePost = async () => {
-        if (confirm("Do You really want to delete this post?"))
+        if (confirm("Do You really want to delete this post?")) {
             await deleteDoc(doc(db, "posts", id));
+        }
     };
 
     const postComment = async (e) => {
@@ -77,9 +79,12 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                 {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
-
-            <img className='w-full max-h-[500px] object-scale-down'
-                src={img} alt='cover' />
+            <div className='relative w-full h-[500px]'>
+                <Image
+                    layout='fill'
+                    objectFit='scale-down'
+                    src={img} alt='cover' />
+            </div>
 
             <div className='flex justify-between px-4 pt-4'>
                 <div className='flex space-x-4'>
@@ -103,11 +108,14 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                 <div className='ml-5 h-20 overflow-y-scroll scrollbar-thumb-gray-300 scrollbar-thin'>
                     {comments.map((comment) => (
                         <div key={comment.id} className='flex items-center space-x-2 mb-3'>
-                            <img
-                                className='h-7 rounded-full'
-                                src={comment.data().userImg}
-                                alt='userimg'
-                            />
+                            <div className='relative h-7 w-7 rounded-full'>
+                                <Image
+                                    layout='fill'
+                                    src={comment.data().userImg}
+                                    alt='userimg'
+                                    className='rounded-full'
+                                />
+                            </div>
                             <p className='text-sm flex-1'>
                                 <span className='font-bold'>{comment.data().username} </span>
                                 {comment.data().comment}
