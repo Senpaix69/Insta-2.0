@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import { faker } from '@faker-js/faker';
 import Login from './login';
 
-const Chat = () => {
+const chat = () => {
     const { data: session } = useSession();
     const [chats, setChats] = useState([]);
 
@@ -58,4 +58,4 @@ const Chat = () => {
     )
 }
 
-export default Chat;
+export default chat;
