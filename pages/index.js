@@ -11,20 +11,14 @@ export default function Home() {
   const { data: session } = useSession();
 
   useEffect(() => {
-    try {
-      const ref = doc(db, "users", session?.user.uid);
-      const getUser = async () => {
-        await setDoc(ref, {
-          username: session.user.username,
-          profImg: session.user.image,
-          timeStamp: serverTimestamp()
-        })
-      }
-      getUser();
-    }
-    catch {
-      console.log("error")
-    }
+    const addUser = async () => {
+      await setDoc(doc(db, "users", session.user.uid), {
+        username: session.user.username,
+        profImg: session.user.image,
+        timeStamp: serverTimestamp()
+      });
+    };
+    if (session) addUser();
   }, [session])
 
   return (
