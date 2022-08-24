@@ -1,6 +1,7 @@
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
-import { CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/outline";
+import { CameraIcon } from "@heroicons/react/outline";
+import { MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useSession } from 'next-auth/react';
 
@@ -65,8 +66,8 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
 
                 {/* Chat Bottom */}
                 <section className="bg-gray-50 sticky bottom-0 z-50 shadow-sm mx-1">
-                    <div className="w-full h-11 border rounded-3xl flex items-center">
-                        <div className="ml-1 h-8 w-8 bg-gray-100 border flex items-center justify-center rounded-full">
+                    <div className="w-full border rounded-3xl h-12 flex items-center">
+                        <div className="ml-1 h-10 w-10 bg-gray-100 border flex items-center justify-center rounded-full">
                             <CameraIcon className="h-7 w-7 cursor-pointer text-blue-500" />
                         </div>
                         <input
