@@ -1,7 +1,5 @@
-import { ArrowLeftIcon } from "@heroicons/react/solid";
+import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
-import { CameraIcon } from "@heroicons/react/outline";
-import { MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useSession } from 'next-auth/react';
 
@@ -11,7 +9,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
     const [msgs, setMsgs] = useState([
         {
             userImg: userImg,
-            userid: 1,
+            userid: id,
             text: "This is example message 1, how are you doing bitches",
             timeStamp: 1
         },
@@ -54,7 +52,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                         <div key={msg.userid} className={`flex mt-1 ${msg.userid === session?.user.uid ? "justify-end" : ""}`}>
                             <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
                                 <img src={msg.userImg} alt='Profile' className={`h-7 w-7 md:h-8 md:w-8 rounded-full cursor-pointer absolute top-1 ${msg.userid === session?.user.uid ? "right-2" : ""}`} />
-                                <p className={`${msg.userid === session?.user.uid ? "mr-10" : "ml-10"} bg-gray-300 p-2 rounded-md`}>{msg.text}
+                                <p className={`${msg.userid === session?.user.uid ? "mr-10" : "ml-10"} bg-gray-300 p-2 rounded-lg`}>{msg.text}
                                     <Moment fromNow className="ml-2 text-[10px] text-gray-500">
                                         <span>{msg.timeStamp}</span>
                                     </Moment>
@@ -67,8 +65,8 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                 {/* Chat Bottom */}
                 <section className="bg-gray-50 sticky bottom-0 z-50 shadow-sm mx-1">
                     <div className="w-full border rounded-3xl h-12 flex items-center">
-                        <div className="ml-1 h-10 w-10 bg-gray-100 border flex items-center justify-center rounded-full">
-                            <CameraIcon className="h-7 w-7 cursor-pointer text-blue-500" />
+                        <div className="ml-1 h-10 w-10 bg-blue-500 border flex items-center justify-center rounded-full">
+                            <CameraIcon className="h-7 w-7 cursor-pointer text-white" />
                         </div>
                         <input
                             placeholder="Message.."
