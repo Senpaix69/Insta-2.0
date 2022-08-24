@@ -9,7 +9,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
     const [msgs, setMsgs] = useState([
         {
             userImg: userImg,
-            userid: id,
+            userid: 1,
             text: "This is example message 1, how are you doing bitches",
             timeStamp: 1
         },
@@ -46,8 +46,8 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
 
                 {/* Chat Body */}
                 <section className='flex-1'>
-                    {msgs?.map(msg => (
-                        <div key={msg.userid} className={`flex mt-1 ${msg.userid === session?.user.uid ? "justify-end" : ""}`}>
+                    {msgs?.map((msg) => (
+                        <div key={msg?.userid} className={`flex mt-1 ${msg.userid === session?.user.uid ? "justify-end" : ""}`}>
                             <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
                                 <img src={msg.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg.userid === session?.user.uid ? "right-2" : ""}`} />
                                 <p className={`${msg.userid === session?.user.uid ? "mr-9" : "ml-9"} bg-gray-300 p-2 rounded-lg`}>{msg.text}
@@ -68,7 +68,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                         </div>
                         <input
                             placeholder="Message.."
-                            className="ml-2 flex-1 outline-none text-sm"
+                            className="mx-2 flex-1 outline-none text-md focus:ring-0"
                             value={text}
                             name={text}
                             onChange={(e) => setText(e.target.value)}

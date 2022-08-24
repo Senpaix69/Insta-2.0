@@ -34,12 +34,11 @@ const Chats = () => {
 
     return (
         <>
-            {activeChatID !== -1 ? (
+            {activeChatID !== -1 && activeChat ? (
                 <>
                     <Chat
                         username={activeChat?.username}
-                        userImg={activeChat?.userImg}
-                        id={activeChat?.id}
+                        userImg={activeChat.userImg}
                         setActiveChatID={setActiveChatID} />
                 </>
             ) : (
