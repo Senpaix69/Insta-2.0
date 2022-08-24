@@ -1,7 +1,9 @@
 import { ArrowLeftIcon } from "@heroicons/react/outline";
 import Moment from "react-moment";
 
-const Chat = ({ username, userImg, timeStamp, setActiveChatID }) => {
+const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
+
+
     return (
         <div className="max-w-6xl lg:mx-auto bg-[url('https://i.pinimg.com/originals/b7/fc/af/b7fcaf2631fc54f28ef3f123855d03dc.jpg')] bg-no-repeat bg-contain bg-center w-full h-screen">
 
@@ -24,6 +26,7 @@ const Chat = ({ username, userImg, timeStamp, setActiveChatID }) => {
             </section>
 
             {/* Chat Body */}
+            
 
 
             {/* Chat Bottom */}

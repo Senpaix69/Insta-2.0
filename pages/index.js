@@ -2,8 +2,31 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Feed from "../components/Feed";
 import Model from "../components/Model";
+import { useSession } from "next-auth/react";
+import { addDoc, collection, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from "../firebase";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    try {
+      const ref = doc(db, "users", session?.user.uid);
+      const getUser = async () => {
+        await setDoc(ref, {
+          username: session.user.username,
+          profImg: session.user.image,
+          timeStamp: serverTimestamp()
+        })
+      }
+      getUser();
+    }
+    catch {
+      console.log("error")
+    }
+  }, [session])
+
   return (
     <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
       <Head>
