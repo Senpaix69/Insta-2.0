@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Feed from "../components/Feed";
 import Model from "../components/Model";
 import { useSession } from "next-auth/react";
-import { addDoc, collection, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from "../firebase";
 import { useEffect } from "react";
 
