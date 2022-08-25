@@ -7,6 +7,19 @@ import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from "../firebase";
 import { useEffect } from "react";
 
+export async function getServerSideProps() {
+  const data = await getDocs(query(collection(db, "posts"), orderBy('timeStamp', 'desc')));
+  const arr = []
+  data.forEach((doc) => {
+    arr.push(doc)
+  })
+  return {
+    props: {
+      postsData: JSON.stringify(arr)
+    },
+  };
+}
+
 export default function Home() {
   const { data: session } = useSession();
 
