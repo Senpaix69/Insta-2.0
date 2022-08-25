@@ -1,16 +1,9 @@
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Loading from '../components/Loading';
 
 const Login = () => {
-    const { data: session } = useSession();
     const router = useRouter();
-    if (session) {
-        router.push('/');
-        return <Loading />
-    }
     return (
         <div className="flex flex-col m-auto col-span-3 items-center mt-20 shadow-lg border rounded-lg w-full md:w-1/2 h-full p-20">
             <div className="relative w-52 h-52">

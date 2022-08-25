@@ -27,7 +27,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
             <div className="bg-[url('https://i.pinimg.com/originals/b7/fc/af/b7fcaf2631fc54f28ef3f123855d03dc.jpg')] bg-no-repeat bg-cover bg-center w-full flex flex-col md:w-[700px] h-screen overflow-y-scroll scrollbar-hide">
 
                 {/* Chat Header */}
-                <section className="shadow-sm bg-white sticky top-0 z-50">
+                <section className="shadow-md bg-white sticky top-0 z-50">
                     <div className="flex items-center px-2 py-1">
                         <ArrowLeftIcon onClick={() => setActiveChatID(-1)} className="btn ml-1" />
                         <img

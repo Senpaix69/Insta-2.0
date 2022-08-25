@@ -1,11 +1,9 @@
 import { getProviders, signIn as signInto } from 'next-auth/react';
-import Header from '../../components/Header';
 import Image from 'next/image';
 
 const signIn = ({ providers }) => {
     return (
         <>
-            <Header />
             <div className='flex flex-col items-center justify-cente mt-[170px] text-center'>
                 <div className='relative h-44 w-[350px] md:w-80'>
                     <Image
