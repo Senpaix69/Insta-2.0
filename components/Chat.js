@@ -1,12 +1,11 @@
 import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
 import { useState, useEffect, useRef } from "react";
-import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy, doc } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useSession } from 'next-auth/react';
 
 const Chat = ({ username, userImg, setActiveChatID }) => {
-
     const { data: session } = useSession();
     const [msgs, setMsgs] = useState([]);
     const [text, setText] = useState('');
@@ -50,6 +49,15 @@ const Chat = ({ username, userImg, setActiveChatID }) => {
             timeStamp: serverTimestamp(),
         })
     }
+
+    useEffect(() => {
+        const addUser = async () => {
+            await updateDoc(doc(db, "users", session.user.username), {
+                timeStamp: serverTimestamp()
+            });
+        };
+        if (session) addUser();
+    }, [session])
 
 
     return (
