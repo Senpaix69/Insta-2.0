@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/outline';
 import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
-import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
+import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc, getDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Moment from 'react-moment';
@@ -67,6 +67,19 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
         })
     }
 
+    const handleChat = async () => {
+        const ref = doc(db, "chats", session.user.uid, "username", username);
+        const data = await getDoc(ref);
+        if (!data.exists()) {
+            await setDoc(ref, {
+                username: username,
+                userImage: userImg
+            }).then(
+                alert("Chat added to your chat section")
+            )
+        }
+    }
+
     return (
         <div className='bg-white border rounded-sm my-2 shadow-md'>
             <div className='flex items-center py-2 px-[5px] shadow-md'>
@@ -94,7 +107,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                 <div className='flex space-x-4'>
                     {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
                         : <HeartIcon onClick={likePost} className='btn' />}
-                    <ChatIcon className='btn' />
+                    {username !== session?.user.username && <ChatIcon className='btn' onClick={handleChat} />}
                     <PaperAirplaneIcon className='btn rotate-90' />
                 </div>
                 <BookmarkIcon className='btn' />

@@ -12,8 +12,9 @@ export default function Home() {
 
   useEffect(() => {
     const addUser = async () => {
-      await setDoc(doc(db, "users", session.user.uid), {
+      await setDoc(doc(db, "users", session.user.username), {
         username: session.user.username,
+        uid: session.user.uid,
         profImg: session.user.image,
         timeStamp: serverTimestamp()
       });
