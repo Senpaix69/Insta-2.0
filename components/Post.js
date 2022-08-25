@@ -85,6 +85,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
             <div className='flex items-center py-2 px-[5px] shadow-md'>
                 <div className='relative rounded-full h-11 w-11 border mr-3'>
                     <Image
+                        priority={true}
                         layout='fill'
                         className='rounded-full'
                         src={userImg} alt='img' />
@@ -98,6 +99,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
             </div>
             <div className='relative w-full h-[400px] md:h-[500px]'>
                 <Image
+                    priority={true}
                     layout='fill'
                     objectFit='scale-down'
                     src={img} alt='cover' />
@@ -127,6 +129,7 @@ const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
                         <div key={comment.id} className='flex items-center space-x-2 mb-3'>
                             <div className='relative h-7 w-7 rounded-full'>
                                 <Image
+                                    priority={true}
                                     layout='fill'
                                     src={comment.data().userImg}
                                     alt='userimg'
