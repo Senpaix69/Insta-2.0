@@ -2,12 +2,34 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
-import { collection, getDocs, doc, updateDoc, serverTimestamp, getDoc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Chat from '../components/Chat';
 import Loading from '../components/Loading';
 
 export async function getServerSideProps() {
+
+    // let docFind = getDoc(doc(db, "chats", username + "-" + session?.user.username));
+    // if ((await docFind).exists()) {
+    //     const data = await getDocs(collection(db, "chats", username + "-" + session?.user.username, "messages"));
+    //     const arr = [];
+    //     data.forEach((doc) => {
+    //         arr.push(doc)
+    //     });
+    //     setMsgs(arr);
+    // } else {
+    //     docFind = getDoc(doc(db, "chats", session?.user.username + "-" + username));
+    //     if ((await docFind).exists()) {
+    //         const data = await getDocs(collection(db, "chats", session?.user.username + "-" + username, "messages"));
+    //         const arr = [];
+    //         data.forEach((doc) => {
+    //             arr.push(doc)
+    //         });
+    //         setMsgs(arr);
+    //     }
+    // }
+
+
     const data = await getDocs(collection(db, "chats"));
     const arr = []
     data.forEach((doc) => {
@@ -65,7 +87,7 @@ const Chats = ({ chatsData }) => {
             } else {
                 const userCheck = await getDoc(doc(db, "users", uName));
                 if (userCheck.exists()) {
-                    await addDoc(collection(db, "chats"), {
+                    await setDoc(doc(db, "chats", uName + "-" + session?.user.username), {
                         username: userCheck.data().username,
                         userImage: userCheck.data().profImg
                     })
@@ -107,7 +129,7 @@ const Chats = ({ chatsData }) => {
                                                 <h1 className='font-semibold h-[22px]'>{chat.username}</h1>
                                                 <div className='flex text-sm w-full justify-between items-center pr-2'>
                                                     <span className='text-gray-400'>
-                                                        Temporary
+                                                        last text
                                                     </span>
                                                     <Moment fromNow className='text-[9px] text-gray-400'>
                                                         <span>1</span>
