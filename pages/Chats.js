@@ -7,29 +7,11 @@ import { db } from '../firebase';
 import Chat from '../components/Chat';
 import Loading from '../components/Loading';
 
-export async function getServerSideProps() {
-
-    const data = await getDocs(collection(db, "chats"));
-    const arr = []
-    data.forEach((doc) => {
-        arr.push(doc.data())
-    })
-    return {
-        props: {
-            chatsData: arr
-        },
-    };
-}
-
-const Chats = ({ chatsData }) => {
+const Chats = () => {
     const { data: session } = useSession();
     const [chats, setChats] = useState([]);
     const [activeChatID, setActiveChatID] = useState(-1);
     const [activeChat, setActiveChat] = useState({});
-
-    useEffect(() => {
-        setChats(chatsData);
-    }, [chatsData])
 
     useEffect(() => {
         const getUserData = async () => {
@@ -41,7 +23,7 @@ const Chats = ({ chatsData }) => {
             setChats(arr);
         }
         if (session) getUserData();
-    }, [session, chats])
+    }, [session, chats]);
 
     useEffect(() => {
         setActiveChat(chats[activeChatID]);
@@ -101,22 +83,23 @@ const Chats = ({ chatsData }) => {
                                     >Add Chat</button>
                                 </div>
                                 <div>
-                                    {chats?.map((chat, i) => (
-                                        <div key={i} onClick={() => setActiveChatID(i)} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
-                                            <img className='w-12 h-12 rounded-full border p-0.5' alt='chat' src={chat.userImage} />
-                                            <div className='ml-3 w-full truncate'>
-                                                <h1 className='font-semibold h-[22px]'>{chat.username}</h1>
-                                                <div className='flex text-sm w-full justify-between items-center pr-2'>
-                                                    <span className='text-gray-400'>
-                                                        last text
-                                                    </span>
-                                                    <Moment fromNow className='text-[9px] text-gray-400'>
-                                                        <span>1</span>
-                                                    </Moment>
+                                    {chats.length === 0 ? <Loading /> :
+                                        chats?.map((chat, i) => (
+                                            <div key={i} onClick={() => setActiveChatID(i)} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
+                                                <img className='w-12 h-12 rounded-full border p-0.5' alt='chat' src={chat.userImage} />
+                                                <div className='ml-3 w-full truncate'>
+                                                    <h1 className='font-semibold h-[22px]'>{chat.username}</h1>
+                                                    <div className='flex text-sm w-full justify-between items-center pr-2'>
+                                                        <span className='text-gray-400'>
+                                                            last text
+                                                        </span>
+                                                        <Moment fromNow className='text-[9px] text-gray-400'>
+                                                            <span>1</span>
+                                                        </Moment>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
                                 </div>
                             </div>
                         </div>

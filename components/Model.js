@@ -27,7 +27,7 @@ const Model = () => {
             profImg: session.user.image,
             timeStamp: serverTimestamp()
         });
-
+        
         const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
         await uploadString(imageRef, selectFile, "data_url").then(async (snapshot) => {
