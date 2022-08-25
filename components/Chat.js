@@ -73,8 +73,8 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                             name={text}
                             onChange={(e) => setText(e.target.value)}
                         />
-                        <MicrophoneIcon className="h-6 w-6 cursor-pointer text-blue-500" />
-                        <PhotographIcon className="mx-2 h-6 w-6 cursor-pointer text-blue-500" />
+                        <MicrophoneIcon className="h-7 w-7 cursor-pointer text-blue-500" />
+                        <PhotographIcon className="mx-2 h-7 w-7 cursor-pointer text-blue-500" />
                         <button
                             type="submit"
                             disabled={text ? false : true}
