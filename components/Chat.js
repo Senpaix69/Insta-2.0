@@ -68,7 +68,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                         </div>
                         <input
                             placeholder="Message.."
-                            className="mx-2 flex-1 outline-none text-md focus:ring-0"
+                            className="mx-2 flex-1 outline-none text-md focus:ring-0 bg-transparent"
                             value={text}
                             name={text}
                             onChange={(e) => setText(e.target.value)}
