@@ -1,11 +1,10 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { useSession } from 'next-auth/react';
 import Post from "./Post";
+import Loading from './Loading';
 
 const Posts = () => {
-    const { data: session } = useSession();
     const [posts, setPosts] = useState([]);
 
     useEffect(
@@ -20,18 +19,18 @@ const Posts = () => {
 
     return (
         <div>
-            {posts.map((post) => (
-                <Post
-                    key={post.id}
-                    id={post.id}
-                    session={session}
-                    username={post.data().username}
-                    userImg={post.data().profImg}
-                    img={post.data().image}
-                    caption={post.data().caption}
-                    timeStamp={post.data().timeStamp}
-                />
-            ))}
+            {posts?.length === 0 ? <Loading /> :
+                posts?.map((post) => (
+                    <Post
+                        key={post.id}
+                        id={post.id}
+                        username={post.data().username}
+                        userImg={post.data().profImg}
+                        img={post.data().image}
+                        caption={post.data().caption}
+                        timeStamp={post.data().timeStamp}
+                    />
+                ))}
         </div>
     )
 }

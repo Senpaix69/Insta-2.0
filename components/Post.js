@@ -12,8 +12,10 @@ import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, d
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Moment from 'react-moment';
+import { useSession } from 'next-auth/react';
 
-const Post = ({ id, username, userImg, img, caption, session, timeStamp }) => {
+const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
+    const { data: session } = useSession();
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
     const [likes, setLikes] = useState([]);

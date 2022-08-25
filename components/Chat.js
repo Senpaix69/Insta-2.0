@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useSession } from 'next-auth/react';
+import Loading from "./Loading";
 
 const Chat = ({ username, userImg, setActiveChatID }) => {
     const { data: session } = useSession();
@@ -85,18 +86,19 @@ const Chat = ({ username, userImg, setActiveChatID }) => {
 
                 {/* Chat Body */}
                 <section className='flex-1'>
-                    {msgs?.map((msg, i) => (
-                        <div ref={messagesEndRef} key={i} className={`flex mt-1 ${msg.username === session?.user.username ? "justify-end" : ""}`}>
-                            <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
-                                <img src={msg.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg.username === session?.user.username ? "right-2" : ""}`} />
-                                <p className={`${msg.username === session?.user.username ? "mr-9" : "ml-9"} bg-gray-300 p-2 rounded-lg`}>{msg.text}
-                                    <Moment fromNow className="ml-2 text-[10px] text-gray-500">
-                                        {msg.timeStamp?.toDate()}
-                                    </Moment>
-                                </p>
+                    {msgs?.length === 0 ? <Loading /> :
+                        msgs?.map((msg, i) => (
+                            <div ref={messagesEndRef} key={i} className={`flex mt-1 ${msg.username === session?.user.username ? "justify-end" : ""}`}>
+                                <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
+                                    <img src={msg.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg.username === session?.user.username ? "right-2" : ""}`} />
+                                    <p className={`${msg.username === session?.user.username ? "mr-9" : "ml-9"} bg-gray-300 p-2 rounded-lg`}>{msg.text}
+                                        <Moment fromNow className="ml-2 text-[10px] text-gray-500">
+                                            {msg.timeStamp?.toDate()}
+                                        </Moment>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </section>
 
                 {/* Chat Bottom */}

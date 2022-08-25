@@ -1,9 +1,9 @@
-import { Rings } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 const Loading = () => {
     return (
         <div className='flex items-center w-full h-screen justify-center'>
-            <Rings type='puff' color='#00BFFF' height={550} width={100} />
+            <ThreeDots color='#00BFFF' height={50} width={40} />
         </div>
     )
 }
