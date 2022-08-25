@@ -2,28 +2,45 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
-import { collection, getDocs, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, serverTimestamp, getDoc, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Chat from '../components/Chat';
 import Loading from '../components/Loading';
 
-const Chats = () => {
+export async function getServerSideProps() {
+    const data = await getDocs(collection(db, "chats"));
+    const arr = []
+    data.forEach((doc) => {
+        arr.push(doc.data())
+    })
+    return {
+        props: {
+            chatsData: arr
+        },
+    };
+}
+
+const Chats = ({ chatsData }) => {
     const { data: session } = useSession();
     const [chats, setChats] = useState([]);
     const [activeChatID, setActiveChatID] = useState(-1);
     const [activeChat, setActiveChat] = useState({});
 
     useEffect(() => {
-        const getChats = async () => {
-            const data = await getDocs(collection(db, "chats", session?.user.uid, "username"));
-            const arr = [];
+        setChats(chatsData);
+    }, [chatsData])
+
+    useEffect(() => {
+        const getUserData = async () => {
+            const data = await getDocs(collection(db, "chats"));
+            const arr = []
             data.forEach((doc) => {
                 arr.push(doc.data())
             })
             setChats(arr);
-        };
-        if (session) getChats();
-    }, [session])
+        }
+        if (session) getUserData();
+    }, [session, chats])
 
     useEffect(() => {
         setActiveChat(chats[activeChatID]);
@@ -37,6 +54,27 @@ const Chats = () => {
         };
         if (session) addUser();
     }, [session?.user.username]);
+
+    const addChat = async () => {
+        const uName = prompt("Enter the username: ")?.split(' ').join('').toLowerCase();
+        if (uName === session.user.username) {
+            alert("You can not add yourself");
+        } else if (uName) {
+            if (chats.findIndex((chat) => chat.username === uName) !== -1) {
+                alert(`${uName} already added`);
+            } else {
+                const userCheck = await getDoc(doc(db, "users", uName));
+                if (userCheck.exists()) {
+                    await addDoc(collection(db, "chats"), {
+                        username: userCheck.data().username,
+                        userImage: userCheck.data().profImg
+                    })
+                } else {
+                    alert(`${uName} does not exits`);
+                }
+            }
+        }
+    }
 
     if (!session) return <Loading />
     return (
@@ -55,7 +93,12 @@ const Chats = () => {
                                 <div className='w-full flex text-lg justify-center items-center p-3 mb-2 shadow-md'>
                                     <h1 className='font-bold'>{session.user.username}</h1>
                                 </div>
-                                <p className='font-bold ml-5 mb-2'>Messages</p>
+                                <div className='flex items-center'>
+                                    <p className='font-bold ml-5 mb-2 flex-1'>Messages</p>
+                                    <button className='font-bold mr-5 text-sm text-blue-500'
+                                        onClick={addChat}
+                                    >Add Chat</button>
+                                </div>
                                 <div>
                                     {chats?.map((chat, i) => (
                                         <div key={i} onClick={() => setActiveChatID(i)} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>

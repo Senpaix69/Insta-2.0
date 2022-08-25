@@ -69,19 +69,6 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
         })
     }
 
-    const handleChat = async () => {
-        const ref = doc(db, "chats", session.user.uid, "username", username);
-        const data = await getDoc(ref);
-        if (!data.exists()) {
-            await setDoc(ref, {
-                username: username,
-                userImage: userImg
-            }).then(
-                alert("Chat added to your chat section")
-            )
-        }
-    }
-
     return (
         <div className='bg-white border rounded-sm my-2 shadow-md'>
             <div className='flex items-center py-2 px-[5px] shadow-md'>
@@ -111,7 +98,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                 <div className='flex space-x-4'>
                     {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
                         : <HeartIcon onClick={likePost} className='btn' />}
-                    {username !== session?.user.username && <ChatIcon className='btn' onClick={handleChat} />}
+                    <ChatIcon className='btn' />
                     <PaperAirplaneIcon className='btn rotate-90' />
                 </div>
                 <BookmarkIcon className='btn' />
