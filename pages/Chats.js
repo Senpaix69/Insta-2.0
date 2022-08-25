@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Moment from 'react-moment';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import Chat from '../components/Chat';
 import Loading from '../components/Loading';
@@ -28,6 +28,15 @@ const Chats = () => {
     useEffect(() => {
         setActiveChat(chats[activeChatID]);
     }, [activeChatID, chats]);
+
+    useEffect(() => {
+        const addUser = async () => {
+            await updateDoc(doc(db, "users", session?.user.username), {
+                timeStamp: serverTimestamp()
+            });
+        };
+        if (session) addUser();
+    }, [session?.user.username]);
 
     if (!session) return <Loading />
     return (

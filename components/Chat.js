@@ -26,14 +26,14 @@ const Chat = ({ username, userImg, setActiveChatID }) => {
                 })
                 setMsgs(texts);
             }),
-        []);
+        [session.user.uid, username]);
 
     useEffect(
         () =>
             onSnapshot(doc(db, "users", username), (snapshot) => {
                 setUser(snapshot.data());
             }),
-        []);
+        [username]);
 
 
 
@@ -52,12 +52,12 @@ const Chat = ({ username, userImg, setActiveChatID }) => {
 
     useEffect(() => {
         const addUser = async () => {
-            await updateDoc(doc(db, "users", session.user.username), {
+            await updateDoc(doc(db, "users", session?.user.username), {
                 timeStamp: serverTimestamp()
             });
         };
         if (session) addUser();
-    }, [session])
+    }, [session?.user.username]);
 
 
     return (
