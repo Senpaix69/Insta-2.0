@@ -63,9 +63,7 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                 {/* Chat Bottom */}
                 <section className="bg-gray-50 sticky bottom-0 z-50 shadow-sm mx-1">
                     <div className="w-full border rounded-3xl h-12 flex items-center">
-                        <div className="ml-1 h-10 w-10 min-w-10 bg-blue-500 border flex items-center justify-center rounded-full">
-                            <CameraIcon className="h-7 w-7 cursor-pointer text-white" />
-                        </div>
+                        <CameraIcon className="h-7 w-7 cursor-pointer text-gray-500 ml-2" />
                         <input
                             placeholder="Message.."
                             className="mx-2 flex-1 outline-none text-md focus:ring-0 bg-transparent"
@@ -73,8 +71,8 @@ const Chat = ({ username, userImg, timeStamp, id, setActiveChatID }) => {
                             name={text}
                             onChange={(e) => setText(e.target.value)}
                         />
-                        <MicrophoneIcon className="h-7 w-7 cursor-pointer text-blue-500" />
-                        <PhotographIcon className="mx-2 h-7 w-7 cursor-pointer text-blue-500" />
+                        <MicrophoneIcon className="h-7 w-7 cursor-pointer text-gray-500" />
+                        <PhotographIcon className="mx-2 h-7 w-7 cursor-pointer text-gray-500" />
                         <button
                             type="submit"
                             disabled={text ? false : true}
