@@ -9,27 +9,6 @@ import Loading from '../components/Loading';
 
 export async function getServerSideProps() {
 
-    // let docFind = getDoc(doc(db, "chats", username + "-" + session?.user.username));
-    // if ((await docFind).exists()) {
-    //     const data = await getDocs(collection(db, "chats", username + "-" + session?.user.username, "messages"));
-    //     const arr = [];
-    //     data.forEach((doc) => {
-    //         arr.push(doc)
-    //     });
-    //     setMsgs(arr);
-    // } else {
-    //     docFind = getDoc(doc(db, "chats", session?.user.username + "-" + username));
-    //     if ((await docFind).exists()) {
-    //         const data = await getDocs(collection(db, "chats", session?.user.username + "-" + username, "messages"));
-    //         const arr = [];
-    //         data.forEach((doc) => {
-    //             arr.push(doc)
-    //         });
-    //         setMsgs(arr);
-    //     }
-    // }
-
-
     const data = await getDocs(collection(db, "chats"));
     const arr = []
     data.forEach((doc) => {

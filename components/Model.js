@@ -28,9 +28,6 @@ const Model = () => {
             timeStamp: serverTimestamp()
         });
 
-        console.log(docRef.id);
-        console.log(storage);
-
         const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
         await uploadString(imageRef, selectFile, "data_url").then(async (snapshot) => {
