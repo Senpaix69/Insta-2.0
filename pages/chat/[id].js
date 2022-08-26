@@ -1,5 +1,6 @@
 import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
+import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -43,11 +44,17 @@ const Chat = () => {
                 <section className="shadow-md bg-white sticky top-0 z-50">
                     <div className="flex items-center px-2 py-1">
                         <ArrowLeftIcon onClick={() => router?.back()} className="btn ml-1" />
-                        <img
-                            src={getOtherProfImage(chat, session?.user.username)}
-                            alt='Hello'
-                            className="h-10 w-10 cursor-pointer rounded-full border p-[1.5px] mx-3"
-                        />
+                        <div className="flex items-center justify-center p-[1px] rounded-full border-red-500 border-2 object-contain mx-2">
+                            <div className="relative w-8 h-8">
+                                <Image
+                                    loading='eager'
+                                    layout="fill"
+                                    src={getOtherProfImage(chat, session.user.username)}
+                                    alt='prof'
+                                    className="rounded-full"
+                                />
+                            </div>
+                        </div>
                         <div>
                             <h1 className="font-bold h-[20px]">{getOtherEmail(chat, session?.user)}</h1>
                             <span className="text-xs md:text-sm text-gray-400">active </span>
@@ -63,7 +70,20 @@ const Chat = () => {
                     {messages?.map((msg) => (
                         <div ref={messagesEndRef} key={msg.id} className={`flex mt-1 ${msg?.username === session?.user.username ? "justify-end" : ""}`}>
                             <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
-                                <img src={msg?.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg?.username === session?.user.username ? "right-2" : ""}`} />
+                                <div className={`absolute top-1 rounded-full ${msg?.username === session?.user.username ? "right-2" : ""}`}>
+                                    <div className="flex items-center justify-center object-contain">
+                                        <div className="relative w-7 h-7">
+                                            <Image
+                                                loading='eager'
+                                                layout="fill"
+                                                src={msg?.userImg}
+                                                alt='prof'
+                                                className= 'rounded-full'
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* <img src={msg?.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg?.username === session?.user.username ? "right-2" : ""}`} /> */}
                                 <p className={`${msg?.username === session?.user.username ? "mr-9 bg-green-200" : "ml-9 bg-blue-200"} p-2 rounded-lg`}>{msg?.text}
                                     <Moment fromNow className="ml-2 text-[10px] text-gray-500">
                                         {msg?.timeStamp?.toDate()}
@@ -98,8 +118,8 @@ const Chat = () => {
                         </div>
                     </form>
                 </section>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

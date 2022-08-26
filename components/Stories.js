@@ -21,8 +21,8 @@ const Stories = () => {
     }, [])
 
     return (
-        <div className='flex space-x-2 py-4 px-5 bg-white mt-1 border-gray-200 border rounded-sm overflow-x-scroll
-        scrollbar-thin scrollbar-thumb-gray-300'>
+        <div className='flex space-x-2 py-1 md:py-3 px-5 bg-white mt-1 border-gray-200 border rounded-sm overflow-x-scroll scrollbar-none md:scrollbar-default
+        md:scrollbar-thin scrollbar-thumb-gray-300'>
             {session && <Story img={session?.user?.image} username={session?.user?.username} />}
             {suggestions.map((profile) => (
                 <Story

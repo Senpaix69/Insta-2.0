@@ -34,7 +34,6 @@ const Chats = () => {
 
     useEffect(() => {
         setUsers(getUserData(chats, session?.user.username));
-        console.log(users)
     }, [snapshot])
 
     const addUser = async () => {

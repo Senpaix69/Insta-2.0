@@ -30,7 +30,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
 
     useEffect(
         () =>
-            onSnapshot(query(collection(db, "posts", id, "comments"), orderBy("timeStamp", 'desc')), (snapshot) => setComments(snapshot.docs)
+            onSnapshot(query(collection(db, "posts", id, "comments"), orderBy("timeStamp", 'asc')), (snapshot) => setComments(snapshot.docs)
             ),
         [id]
     );

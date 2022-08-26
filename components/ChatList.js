@@ -4,15 +4,16 @@ import Moment from 'react-moment';
 const ChatList = ({ redirect, profImg, username, lastScene, id }) => {
     return (
         <div onClick={() => redirect(id)} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
-            <div className='relative rounded-full'>
-                <Image
-                    height='50px'
-                    width='50px'
-                    loading='eager'
-                    className='rounded-full'
-                    alt='chat'
-                    src={profImg}
-                />
+            <div className="flex items-center justify-center p-[1px] rounded-full border-red-500 border-2 object-contain cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
+                <div className="relative w-11 h-11">
+                    <Image
+                        loading='eager'
+                        layout="fill"
+                        src={profImg}
+                        alt='story'
+                        className="rounded-full"
+                    />
+                </div>
             </div>
             <div className='ml-3 w-full truncate'>
                 <h1 className='font-semibold -mt-1 h-[22px]'>{username}</h1>
