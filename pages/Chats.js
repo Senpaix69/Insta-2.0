@@ -1,12 +1,13 @@
 import { useSession } from 'next-auth/react';
 import Header from '../components/Header';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
 import Loading from '../components/Loading';
 import getUserData from '../utils/getUserData';
 import getOtherEmail from '../utils/getOtherEmail';
 import getOtherProfImage from '../utils/getOtherProfImage';
+import getOtherTimeStamp from '../utils/getOtherTimeStamp';
 import { useRouter } from 'next/router';
 import ChatList from '../components/ChatList';
 import { useEffect, useState } from 'react';
@@ -20,14 +21,20 @@ const Chats = () => {
     const [values] = useCollectionData(collection(db, "users"));
 
     const chatExits = (email) => {
-        return (chats?.find(({ username }) => (username === session.user.username) &&
-            (username === email)
-        ))
+        let valid = false;
+        chats?.map(docf => {
+            if ((docf.users[0].username === session.user.username && docf.users[1].username === email) ||
+                docf.users[1].username === session.user.username && docf.users[0].username === email) {
+                valid = true;
+                stop();
+            }
+        })
+        return valid;
     }
 
     useEffect(() => {
         setUsers(getUserData(chats, session?.user.username));
-    }, [loading])
+    }, [loading, session])
 
     const addUser = async () => {
         const uName = prompt("Enter username: ")?.split(' ').join('').toLowerCase();
@@ -35,8 +42,18 @@ const Chats = () => {
             if (!chatExits(uName)) {
                 const ind = values.findIndex((user) => user.username === uName);
                 if (ind !== -1 && !loading) {
+                    const time = Timestamp.now();
                     await addDoc(collection(db, "chats"), {
-                        users: [values[ind], session.user]
+                        users:
+                            [
+                                values[ind],
+                                {
+                                    username: session.user.username,
+                                    uid: session.user.uid,
+                                    profImg: session.user.image,
+                                    timeStamp: time
+                                },
+                            ]
                     }).then(() => {
                         alert("Chat Added Successfully");
                     })
@@ -79,6 +96,7 @@ const Chats = () => {
                                         redirect={redirect}
                                         username={getOtherEmail(user, session.user)}
                                         profImg={getOtherProfImage(user, session.user.username)}
+                                        lastScene={getOtherTimeStamp(user, session.user.username)}
                                     />
                                 ))
                             }

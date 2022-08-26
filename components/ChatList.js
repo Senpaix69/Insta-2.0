@@ -11,7 +11,7 @@ const ChatList = ({ redirect, profImg, username, lastScene, id }) => {
                         dummy text
                     </span>
                     <Moment fromNow className='text-[9px] text-gray-400'>
-                        {lastScene}
+                        {lastScene.toDate()}
                     </Moment>
                 </div>
             </div>
