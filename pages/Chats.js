@@ -34,7 +34,8 @@ const Chats = () => {
 
     useEffect(() => {
         setUsers(getUserData(chats, session?.user.username));
-    }, [session])
+        console.log(users)
+    }, [snapshot])
 
     const addUser = async () => {
         const uName = prompt("Enter username: ")?.split(' ').join('').toLowerCase();
