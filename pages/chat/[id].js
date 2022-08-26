@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
+import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon, DocumentRemoveIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
@@ -11,6 +11,7 @@ import Loading from '../../components/Loading';
 import getOtherEmail from '../../utils/getOtherEmail';
 import getOtherProfImage from '../../utils/getOtherProfImage';
 import getOtherTimeStamp from '../../utils/getOtherTimeStamp';
+import { async } from "@firebase/util";
 
 const Chat = () => {
     const { data: session } = useSession();
@@ -34,6 +35,13 @@ const Chat = () => {
     const scrollToBottom = () => {
         messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
     }
+
+    // const deleteMessage = async (id) => {
+    //     console.log(id);
+    //     console.log(messages);
+    //     console.log(chat);
+    // }
+
     useEffect(scrollToBottom, [messages]);
     if (chatLoading && loading) return <Loading />
     return (
@@ -78,17 +86,19 @@ const Chat = () => {
                                                 layout="fill"
                                                 src={msg?.userImg}
                                                 alt='prof'
-                                                className= 'rounded-full'
+                                                className='rounded-full'
                                             />
                                         </div>
                                     </div>
                                 </div>
-                                {/* <img src={msg?.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg?.username === session?.user.username ? "right-2" : ""}`} /> */}
                                 <p className={`${msg?.username === session?.user.username ? "mr-9 bg-green-200" : "ml-9 bg-blue-200"} p-2 rounded-lg`}>{msg?.text}
                                     <Moment fromNow className="ml-2 text-[10px] text-gray-500">
                                         {msg?.timeStamp?.toDate()}
                                     </Moment>
                                 </p>
+                                {msg?.username === session?.user.username &&
+                                    <DocumentRemoveIcon className="btn h-6 w-6 absolute -left-6 text-emerald-700 overflow-hidden"/>
+                                }
                             </div>
                         </div>
                     ))}
