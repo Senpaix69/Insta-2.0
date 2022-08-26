@@ -3,7 +3,7 @@ const getOtherProfImage = (all, uName) => {
     const url = "";
     all?.users.map(user => {
         if (user.username !== uName) {
-            url = user.profImg;
+            url = user?.profImg;
         }
     })
     return url;
