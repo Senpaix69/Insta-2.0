@@ -1,6 +1,6 @@
 import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore'
@@ -19,7 +19,6 @@ const Chat = () => {
     const messagesEndRef = useRef(null);
     const [messages, loading] = useCollectionData(query(collection(db, `chats/${id}/messages`), orderBy("timeStamp", "asc")));
     const [chat, chatLoading] = useDocumentData(doc(db, `chats/${id}`));
-    console.log(messages);
 
     const sendMessage = async (e) => {
         e.preventDefault();
@@ -31,13 +30,13 @@ const Chat = () => {
         })
         setText("");
     }
-    // const scrollToBottom = () => {
-    //     messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
-    // }
-    // useEffect(scrollToBottom, [msgs]);
+    const scrollToBottom = () => {
+        messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
+    }
+    useEffect(scrollToBottom, [messages]);
     if (chatLoading && loading) return <Loading />
     return (
-        <div ref={messagesEndRef} className="max-w-6xl lg:mx-auto flex justify-center bg-gray-100">
+        <div className="max-w-6xl lg:mx-auto flex justify-center bg-gray-100">
             <div className="bg-[url('https://i.pinimg.com/originals/b7/fc/af/b7fcaf2631fc54f28ef3f123855d03dc.jpg')] bg-no-repeat bg-cover bg-center w-full flex flex-col md:w-[700px] h-screen overflow-y-scroll scrollbar-hide scri">
 
                 {/* Chat Header */}
@@ -65,7 +64,7 @@ const Chat = () => {
                         <div ref={messagesEndRef} key={msg.id} className={`flex mt-1 ${msg?.username === session?.user.username ? "justify-end" : ""}`}>
                             <div className="flex items-center rounded-md w-fit max-w-xs py-1 px-2 relative">
                                 <img src={msg?.userImg} alt='Profile' className={`h-8 w-8 rounded-full cursor-pointer absolute top-1 ${msg?.username === session?.user.username ? "right-2" : ""}`} />
-                                <p className={`${msg?.username === session?.user.username ? "mr-9" : "ml-9"} bg-gray-300 p-2 rounded-lg`}>{msg?.text}
+                                <p className={`${msg?.username === session?.user.username ? "mr-9 bg-green-200" : "ml-9 bg-blue-200"} p-2 rounded-lg`}>{msg?.text}
                                     <Moment fromNow className="ml-2 text-[10px] text-gray-500">
                                         {msg?.timeStamp?.toDate()}
                                     </Moment>
