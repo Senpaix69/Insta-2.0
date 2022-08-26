@@ -23,7 +23,7 @@ const Header = () => {
                     {/* Header */}
                     <div className="relative hidden lg:inline-grid w-24">
                         <Image
-                            priority={true}
+                            loading='eager'
                             alt="img"
                             src='https://links.papareact.com/ocw'
                             layout="fill"
@@ -32,7 +32,7 @@ const Header = () => {
                     </div>
                     <div className="relative w-10 lg:hidden flex-shrink-0">
                         <Image
-                            priority={true}
+                            loading='eager'
                             alt="img"
                             src='https://links.papareact.com/jjm'
                             layout="fill"
