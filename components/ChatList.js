@@ -6,8 +6,8 @@ const ChatList = ({ redirect, profImg, username, lastScene, id }) => {
     return (
         <div className='relative hover:bg-gray-200'>
             <button className='absolute flex items-center right-5 hover:underline cursor-pointer text-gray-500 text-sm font-semibold mt-3'>
-                <XCircleIcon className='h-4 w-4 mr-1' />
                 delete
+                <XCircleIcon className='h-5 w-5 ml-1' />
             </button>
             <div onClick={() => redirect(id)} className='flex items-center w-full py-2 px-3 cursor-pointer truncate'>
                 <div className="flex items-center justify-center p-[1px] rounded-full border-red-500 border-2 object-contain cursor-pointer hover:scale-110 transition transform duration-200 ease-out">

@@ -4,9 +4,9 @@ import {
     EmojiHappyIcon,
     DotsHorizontalIcon,
     HeartIcon,
-    PaperAirplaneIcon,
-    XIcon
+    PaperAirplaneIcon
 } from '@heroicons/react/outline';
+import { XCircleIcon } from '@heroicons/react/solid';
 import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
 import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc, getDoc } from 'firebase/firestore';
@@ -85,7 +85,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                     {timeStamp?.toDate()}
                 </Moment>
                 {session?.user?.username === username ?
-                    <XIcon className='w-7 h-7 text-blue-500 mr-3 btn'  onClick={deletePost} />:
+                    <XCircleIcon className='w-7 h-7 text-gray-500 mr-3 cursor-pointer' onClick={deletePost} /> :
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
             <div className='relative w-full h-[400px] md:h-[500px]'>

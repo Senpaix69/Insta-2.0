@@ -36,11 +36,9 @@ const Chat = () => {
         messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
     }
 
-    // const deleteMessage = async (id) => {
-    //     console.log(id);
-    //     console.log(messages);
-    //     console.log(chat);
-    // }
+    const unsendMessage = async (id) => {
+        alert("Unsend Message is deactivate right now");
+    }
 
     useEffect(scrollToBottom, [messages]);
     if (chatLoading && loading) return <Loading />
@@ -97,7 +95,9 @@ const Chat = () => {
                                     </Moment>
                                 </p>
                                 {msg?.username === session?.user.username &&
-                                    <XCircleIcon className="btn h-6 w-6 absolute -left-6 text-emerald-700 overflow-hidden" />
+                                    <XCircleIcon className="h-6 w-6 absolute -left-6 cursor-pointer text-gray-500 overflow-hidden"
+                                        onClick={() => unsendMessage(msg.id)}
+                                    />
                                 }
                             </div>
                         </div>
