@@ -1,3 +1,4 @@
+import { UserAddIcon, UserCircleIcon } from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import Header from '../components/Header';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
@@ -80,12 +81,17 @@ const Chats = () => {
                 <div className='bg-gray-100 flex justify-center h-screen'>
                     <div className='flex flex-col shadow-md md:w-[700px] w-full bg-white'>
                         <div className='w-full flex text-lg justify-center items-center p-3 mb-2 shadow-md'>
+                            <UserCircleIcon className='h-6 w-6 mr-2' />
                             <h1 className='font-bold'>{session.user.username}</h1>
                         </div>
                         <div className='flex items-center'>
                             <p className='font-bold ml-5 mb-2 flex-1'>Messages</p>
-                            <button onClick={addUser} className='font-bold mr-5 text-sm text-blue-500'
-                            >Add Chat</button>
+                            <button onClick={addUser} className='font-bold mr-5 text-sm text-blue-500 hover:underline'>
+                                <div className='flex'>
+                                    <UserAddIcon className='h-5 w-5 mr-2' />
+                                    Add Chat
+                                </div>
+                            </button>
                         </div>
                         <div>
                             {loading && values === undefined ? <Loading /> :

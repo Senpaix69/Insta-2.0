@@ -4,7 +4,8 @@ import {
     EmojiHappyIcon,
     DotsHorizontalIcon,
     HeartIcon,
-    PaperAirplaneIcon
+    PaperAirplaneIcon,
+    XIcon
 } from '@heroicons/react/outline';
 import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
@@ -72,7 +73,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
     return (
         <div className='bg-white border rounded-sm my-2 shadow-md'>
             <div className='flex items-center py-2 px-[5px] shadow-md'>
-                <div className='relative rounded-full h-11 w-11 border mr-3'>
+                <div className='relative rounded-full h-9 w-9 border mr-3 ml-2'>
                     <Image
                         loading='eager'
                         layout='fill'
@@ -80,10 +81,11 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                         src={userImg} alt='img' />
                 </div>
                 <p className='flex-1 font-bold'> {username} </p>
-                <Moment fromNow className='pr-5 text-xs text-gray-400'>
+                <Moment fromNow className='mr-2 text-[9px] text-gray-400'>
                     {timeStamp?.toDate()}
                 </Moment>
-                {session?.user?.username === username ? <button className='text-sm mr-3 btn font-semibold text-blue-400' onClick={deletePost}>delete</button> :
+                {session?.user?.username === username ?
+                    <XIcon className='w-7 h-7 text-blue-500 mr-3 btn'  onClick={deletePost} />:
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
             <div className='relative w-full h-[400px] md:h-[500px]'>
@@ -129,7 +131,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                                 <span className='font-bold'>{comment.data().username} </span>
                                 {comment.data().comment}
                             </p>
-                            <Moment fromNow className='pr-5 text-xs text-gray-400'>
+                            <Moment fromNow className='text-[9px] text-gray-400 pr-5'>
                                 {comment.data().timeStamp?.toDate()}
                             </Moment>
                         </div>

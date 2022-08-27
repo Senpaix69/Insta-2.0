@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon, DocumentRemoveIcon } from "@heroicons/react/solid";
+import { ArrowLeftIcon, CameraIcon, MicrophoneIcon, PhotographIcon, XCircleIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
@@ -11,7 +11,6 @@ import Loading from '../../components/Loading';
 import getOtherEmail from '../../utils/getOtherEmail';
 import getOtherProfImage from '../../utils/getOtherProfImage';
 import getOtherTimeStamp from '../../utils/getOtherTimeStamp';
-import { async } from "@firebase/util";
 
 const Chat = () => {
     const { data: session } = useSession();
@@ -97,7 +96,7 @@ const Chat = () => {
                                     </Moment>
                                 </p>
                                 {msg?.username === session?.user.username &&
-                                    <DocumentRemoveIcon className="btn h-6 w-6 absolute -left-6 text-emerald-700 overflow-hidden"/>
+                                    <XCircleIcon className="btn h-6 w-6 absolute -left-6 text-emerald-700 overflow-hidden" />
                                 }
                             </div>
                         </div>

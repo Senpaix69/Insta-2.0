@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import { HomeIcon, UserCircleIcon, PlusCircleIcon, ChatAlt2Icon, SparklesIcon, ArrowCircleLeftIcon } from '@heroicons/react/solid';
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -24,30 +26,36 @@ export default function Example({ session, setOpen, signOut, router }) {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                    { router.asPath !== '/' &&
+                    <div className="py-3">
+                        {router.asPath !== '/' &&
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => router.push('/')}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block px-4 py-3 text-sm w-full'
+                                        )}
+                                    >
+                                        <div className='flex'>
+                                            <HomeIcon className='h-5 w-5 mr-2' />
+                                            Home
+                                        </div>
+                                    </button>
+                                )}
+                            </Menu.Item>}
                         <Menu.Item>
                             {({ active }) => (
                                 <button
-                                    onClick={() => router.push('/')}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-[8px] text-sm w-full'
                                     )}
                                 >
-                                    Home
-                                </button>
-                            )}
-                        </Menu.Item>}
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[8px] text-sm w-full'
-                                    )}
-                                >
-                                    Profile [Not Active]
+                                    <div className='flex'>
+                                        <UserCircleIcon className='h-5 w-5 mr-2' />
+                                        Profile [Not Active]
+                                    </div>
                                 </button>
                             )}
                         </Menu.Item>
@@ -61,7 +69,10 @@ export default function Example({ session, setOpen, signOut, router }) {
                                             'block px-4 py-[8px] text-sm w-full'
                                         )}
                                     >
-                                        Add Post
+                                        <div className='flex'>
+                                            <PlusCircleIcon className='h-5 w-5 mr-2' />
+                                            Add Post
+                                        </div>
                                     </button>
                                 )}
                             </Menu.Item>}
@@ -75,7 +86,10 @@ export default function Example({ session, setOpen, signOut, router }) {
                                             'block px-4 py-[8px] text-sm w-full'
                                         )}
                                     >
-                                        Chats [In working]
+                                        <div className='flex'>
+                                            <ChatAlt2Icon className='h-5 w-5 mr-2' />
+                                            Chats [In working]
+                                        </div>
                                     </button>
                                 )}
                             </Menu.Item>}
@@ -87,7 +101,10 @@ export default function Example({ session, setOpen, signOut, router }) {
                                         'block px-4 py-[8px] text-sm w-full'
                                     )}
                                 >
-                                    Support [Not Active]
+                                    <div className='flex'>
+                                        <SparklesIcon className='h-5 w-5 mr-2' />
+                                        Support [Not Active]
+                                    </div>
                                 </button>
                             )}
                         </Menu.Item>
@@ -101,7 +118,10 @@ export default function Example({ session, setOpen, signOut, router }) {
                                             'block w-full px-4 py-[8px] text-sm'
                                         )}
                                     >
-                                        Sign out
+                                        <div className='flex'>
+                                            <ArrowCircleLeftIcon className='h-5 w-5 mr-2' />
+                                            Sign out
+                                        </div>
                                     </button>
                                 )}
                             </Menu.Item>}
