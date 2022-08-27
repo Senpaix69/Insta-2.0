@@ -80,10 +80,10 @@ const Chats = () => {
                 <Header />
                 <div className='bg-gray-100 flex justify-center h-screen'>
                     <div className='flex flex-col shadow-md md:w-[700px] w-full bg-white'>
-                        <div className='w-full flex text-lg justify-center items-center p-3 mb-2 shadow-md'>
+                        <button className='w-full flex text-lg justify-center items-center p-3 mb-2 shadow-md'>
                             <UserCircleIcon className='h-6 w-6 mr-2' />
-                            <h1 className='font-bold'>{session.user.username}</h1>
-                        </div>
+                            <h1 className='font-bold hover:underline'>{session.user.username}</h1>
+                        </button>
                         <div className='flex items-center'>
                             <p className='font-bold ml-5 mb-2 flex-1'>Messages</p>
                             <button onClick={addUser} className='font-bold mr-5 text-sm text-blue-500 hover:underline'>
@@ -102,7 +102,6 @@ const Chats = () => {
                                         redirect={redirect}
                                         username={getOtherEmail(user, session.user)}
                                         profImg={getOtherProfImage(user, session.user.username)}
-                                        lastScene={getOtherTimeStamp(user, session.user.username)}
                                     />
                                 ))
                             }

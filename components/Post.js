@@ -79,13 +79,14 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                         layout='fill'
                         className='rounded-full'
                         src={userImg} alt='img' />
+                    <span className="top-0 -right-1 absolute  w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
                 </div>
                 <p className='flex-1 font-bold'> {username} </p>
                 <Moment fromNow className='mr-2 text-[10px] text-gray-400'>
                     {timeStamp?.toDate()}
                 </Moment>
                 {session?.user?.username === username ?
-                    <XCircleIcon className='w-7 h-7 text-gray-500 mr-3 cursor-pointer' onClick={deletePost} /> :
+                    <XCircleIcon className='w-8 h-8 text-gray-500 mr-3 cursor-pointer' onClick={deletePost} /> :
                     <DotsHorizontalIcon className='btn pr-3' />}
             </div>
             <div className='relative w-full h-[400px] md:h-[500px]'>
@@ -101,7 +102,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                     {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
                         : <HeartIcon onClick={likePost} className='btn' />}
                     <ChatIcon className='btn' />
-                    <PaperAirplaneIcon className='btn rotate-90' />
+                    <PaperAirplaneIcon className='btn pt-1 rotate-90' />
                 </div>
                 <BookmarkIcon className='btn' />
             </div>
