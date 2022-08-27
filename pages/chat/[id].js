@@ -11,7 +11,7 @@ import Loading from '../../components/Loading';
 import getChatMessages from '../../utils/getChatMessages';
 import getOtherEmail from '../../utils/getOtherEmail';
 import getOtherProfImage from '../../utils/getOtherProfImage';
-import getOtherTimeStamp from '../../utils/getOtherTimeStamp';
+import getUserActivity from "../../utils/getUserActivity";
 
 const Chat = () => {
     const { data: session } = useSession();
@@ -21,7 +21,8 @@ const Chat = () => {
     const messagesEndRef = useRef(null);
     const [chat, loading] = useDocumentData(doc(db, `chats/${id}`));
     const messages = getChatMessages(id);
-
+    const users = getUserActivity();
+    
     const sendMessage = async (e) => {
         e.preventDefault();
         const msgToSend = text;
@@ -66,7 +67,7 @@ const Chat = () => {
                             <h1 className="font-bold h-[20px]">{getOtherEmail(chat, session?.user)}</h1>
                             <span className="text-xs md:text-sm text-gray-400">active </span>
                             <Moment fromNow className="text-xs md:text-sm text-gray-400">
-                                {getOtherTimeStamp(chat, session?.user.username)?.toDate()}
+                                {users && users[users.findIndex((user) => user.username === getOtherEmail(chat, session?.user))]?.timeStamp?.toDate()}
                             </Moment>
                         </div>
                     </div>

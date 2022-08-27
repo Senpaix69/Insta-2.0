@@ -1,17 +1,17 @@
-import { UserAddIcon, UserCircleIcon } from '@heroicons/react/solid';
+import { db } from '../firebase';
+import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Header from '../components/Header';
+import { UserAddIcon, UserCircleIcon } from '@heroicons/react/solid';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
-import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore';
-import { db } from '../firebase';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { useRouter } from 'next/router';
 import Loading from '../components/Loading';
 import getUserData from '../utils/getUserData';
 import getOtherEmail from '../utils/getOtherEmail';
 import getOtherProfImage from '../utils/getOtherProfImage';
-import getOtherTimeStamp from '../utils/getOtherTimeStamp';
-import { useRouter } from 'next/router';
 import ChatList from '../components/ChatList';
-import { useEffect, useState } from 'react';
+import getUserActivity from '../utils/getUserActivity';
 
 const Chats = () => {
     const { data: session } = useSession();
@@ -19,7 +19,7 @@ const Chats = () => {
     const [users, setUsers] = useState();
     const [snapshot, loading] = useCollection(collection(db, "chats"));
     const chats = snapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    const [values] = useCollectionData(collection(db, "users"));
+    const values = getUserActivity();
 
     const chatExits = (email) => {
         let valid = false;
