@@ -4,6 +4,7 @@ import Stories from "./Stories";
 import Suggestions from "./Suggestions";
 import { useSession } from 'next-auth/react';
 import Login from "../pages/login";
+import Notification from "./Notification";
 
 const Feed = () => {
   const { data: session } = useSession();
@@ -15,6 +16,7 @@ const Feed = () => {
           <section className="col-span-2">
             <Stories />
             <Posts />
+            <Notification />
           </section>
 
           <section className="hidden xl:inline-grid md:col-span-1">
