@@ -26,12 +26,11 @@ let useHasNewDeploy = () => {
     let [hasNewDeploy, setHasNewDeploy] = useState(false);
     useInterval(async () => {
         let version = await getCurrentVersion();
-        console.log("new version:", version);
         if (versionRef.current && version !== versionRef.current) {
             setHasNewDeploy(true);
         }
         versionRef.current = version;
-    }, 3_000);
+    }, 5_000);
 
     return hasNewDeploy;
 }
