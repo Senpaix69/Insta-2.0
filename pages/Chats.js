@@ -88,7 +88,7 @@ const Chats = () => {
                             <p className='font-bold ml-5 mb-2 flex-1'>Messages</p>
                             <button onClick={addUser} className='font-bold mr-5 text-sm text-blue-500 hover:underline'>
                                 <div className='flex'>
-                                    <UserAddIcon className='h-5 w-5 mr-2' />
+                                    <UserAddIcon className='h-4 w-4 mr-2 mt-[2px]' />
                                     Add Chat
                                 </div>
                             </button>

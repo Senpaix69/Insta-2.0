@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { HomeIcon, UserCircleIcon, PlusCircleIcon, ChatAlt2Icon, SparklesIcon, ArrowCircleLeftIcon } from '@heroicons/react/solid';
+import { HomeIcon, UserCircleIcon, PlusCircleIcon, ChatAlt2Icon, SparklesIcon, ArrowCircleLeftIcon, MoonIcon } from '@heroicons/react/solid';
 
 
 function classNames(...classes) {
@@ -49,7 +49,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 <button
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[8px] text-sm w-full'
+                                        'block px-4 py-3 text-sm w-full'
                                     )}
                                 >
                                     <div className='flex'>
@@ -66,7 +66,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                         onClick={() => setOpen(true)}
                                         className={classNames(
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                            'block px-4 py-[8px] text-sm w-full'
+                                            'block px-4 py-3 text-sm w-full'
                                         )}
                                     >
                                         <div className='flex'>
@@ -83,12 +83,12 @@ export default function Example({ session, setOpen, signOut, router }) {
                                         onClick={() => router.push('/Chats')}
                                         className={classNames(
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                            'block px-4 py-[8px] text-sm w-full'
+                                            'block px-4 py-3 text-sm w-full'
                                         )}
                                     >
                                         <div className='flex'>
                                             <ChatAlt2Icon className='h-5 w-5 mr-2' />
-                                            Chats [In working]
+                                            Chats
                                         </div>
                                     </button>
                                 )}
@@ -98,12 +98,28 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 <button
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block px-4 py-[8px] text-sm w-full'
+                                        'block px-4 py-3 text-sm w-full'
                                     )}
                                 >
                                     <div className='flex'>
                                         <SparklesIcon className='h-5 w-5 mr-2' />
                                         Support [Not Active]
+                                    </div>
+                                </button>
+                            )}
+                        </Menu.Item>
+                        <Menu.Item>
+                            {({ active }) => (
+                                <button
+                                    onClick={signOut}
+                                    className={classNames(
+                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        'block w-full px-4 py-3 text-sm'
+                                    )}
+                                >
+                                    <div className='flex'>
+                                        <MoonIcon className='h-5 w-5 mr-2' />
+                                        Theme [Not Active]
                                     </div>
                                 </button>
                             )}
@@ -115,7 +131,7 @@ export default function Example({ session, setOpen, signOut, router }) {
                                         onClick={signOut}
                                         className={classNames(
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                            'block w-full px-4 py-[8px] text-sm'
+                                            'block w-full px-4 py-3 text-sm'
                                         )}
                                     >
                                         <div className='flex'>

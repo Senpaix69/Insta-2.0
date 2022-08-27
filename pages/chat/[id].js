@@ -23,13 +23,14 @@ const Chat = () => {
 
     const sendMessage = async (e) => {
         e.preventDefault();
+        const msgToSend = text;
+        setText("");
         await addDoc(collection(db, 'chats', id, 'messages'), {
-            text: text,
+            text: msgToSend,
             username: session.user.username,
             userImg: session.user.image,
             timeStamp: serverTimestamp(),
         })
-        setText("");
     }
     const scrollToBottom = () => {
         messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })

@@ -81,7 +81,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                         src={userImg} alt='img' />
                 </div>
                 <p className='flex-1 font-bold'> {username} </p>
-                <Moment fromNow className='mr-2 text-[9px] text-gray-400'>
+                <Moment fromNow className='mr-2 text-[10px] text-gray-400'>
                     {timeStamp?.toDate()}
                 </Moment>
                 {session?.user?.username === username ?
