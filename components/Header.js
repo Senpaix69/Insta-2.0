@@ -12,14 +12,14 @@ import { modelState } from "../atoms/modelAtom";
 import Menu from './Menu';
 
 
-const Header = () => {
+const Header = ({ darkMode, setDarkMode }) => {
     const { data: session } = useSession();
     const [open, setOpen] = useRecoilState(modelState);
     const router = useRouter();
     return (
-        <div className="shadow-sm border-b bg-white sticky top-0 py-2 md:p-2 z-50">
+        <div className={`shadow-sm bg-white sticky top-0 z-50`}>
             {session && (
-                <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
+                <div className="flex justify-between max-w-6xl px-5 lg:mx-auto dark:shadow-gray-600 dark:border-gray-500 dark:bg-gray-900">
                     {/* Header */}
                     <div className="relative hidden lg:inline-grid w-24">
                         <Image
@@ -44,24 +44,24 @@ const Header = () => {
                     <div className="max-w-xs">
                         <div className="mt-1 relative p-2 rounded-md">
                             <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
-                                <SearchIcon className='h-5 w-5 text-gray-500' />
+                                <SearchIcon className='h-5 w-5 text-gray-500 dark:text-white' />
                             </div>
-                            <input className="bg-gray-50 md:block w-full pl-10 sm:text-sm border-gray-200 focus:ring-gray-200 focus:border-gray-200  rounded-md" placeholder="search.." type='text' />
+                            <input className="bg-gray-50 dark:bg-transparent md:block w-full pl-10 sm:text-sm border-gray-700 dark:border-gray-600 focus:ring-gray-700 focus:border-gray-600 dark:placeholder:text-gray-300 rounded-md dark:text-white" placeholder="search.." type='text' />
                         </div>
                     </div>
 
                     {/* Right Section */}
                     <div className="flex items-center space-x-4 justify-end">
-                        <Menu setOpen={setOpen} signOut={signOut} session={session} router={router} />
+                        <Menu darkMode={darkMode} setDarkMode={setDarkMode} setOpen={setOpen} signOut={signOut} session={session} router={router} />
                         <div className="md:flex hidden items-center space-x-4 justify-end">
-                            <HomeIcon onClick={() => router.push('/')} className="navBtn" />
-                            <div className="relative navBtn">
+                            <HomeIcon onClick={() => router.push('/')} className="navBtn dark:text-gray-200" />
+                            <div className="relative navBtn dark:text-gray-200">
                                 <PaperAirplaneIcon onClick={() => router.push('/Chats')} className="navBtn rotate-45" />
                                 <div className="absolute -top-2 -right-2 text-xs w-5 h-5 bg-red-500 flex items-center justify-center rounded-full animate-pulse text-white">5</div>
                             </div>
-                            <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
-                            <UserGroupIcon className="navBtn" />
-                            <HeartIcon className="navBtn" />
+                            <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn dark:text-gray-200" />
+                            <UserGroupIcon className="navBtn dark:text-gray-200" />
+                            <HeartIcon className="navBtn dark:text-gray-200" />
                             <img src={session.user?.image} alt='Profile Pic' className="h-8 w-8 rounded-full cursor-pointer" />
                         </div>
                     </div>

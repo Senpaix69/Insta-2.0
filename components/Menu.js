@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { HomeIcon, UserCircleIcon, PlusCircleIcon, ChatAlt2Icon, SparklesIcon, ArrowCircleLeftIcon, MoonIcon } from '@heroicons/react/solid';
+import { HomeIcon, UserCircleIcon, PlusCircleIcon, ChatAlt2Icon, SparklesIcon, ArrowCircleLeftIcon, MoonIcon, SunIcon } from '@heroicons/react/solid';
 
 
 function classNames(...classes) {
@@ -8,7 +8,7 @@ function classNames(...classes) {
 }
 
 
-export default function Example({ session, setOpen, signOut, router }) {
+export default function Example({ session, setOpen, signOut, router, darkMode, setDarkMode }) {
 
     return (
         <Menu as="div" className="relative inline-block text-left md:hidden pt-2">
@@ -108,22 +108,23 @@ export default function Example({ session, setOpen, signOut, router }) {
                                 </button>
                             )}
                         </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    onClick={signOut}
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'block w-full px-4 py-3 text-sm'
-                                    )}
-                                >
-                                    <div className='flex'>
-                                        <MoonIcon className='h-5 w-5 mr-2' />
-                                        Theme [Not Active]
-                                    </div>
-                                </button>
-                            )}
-                        </Menu.Item>
+                        {router.asPath !== '/Chats' &&
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => setDarkMode(!darkMode)}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block w-full px-4 py-3 text-sm'
+                                        )}
+                                    >
+                                        <div className='flex'>
+                                            {darkMode ? <MoonIcon className='h-5 w-5 mr-2' /> : <SunIcon className='h-5 w-5 mr-2' />}
+                                            Theme
+                                        </div>
+                                    </button>
+                                )}
+                            </Menu.Item>}
                         {router.asPath !== '/Chats' &&
                             <Menu.Item>
                                 {({ active }) => (

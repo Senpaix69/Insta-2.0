@@ -14,7 +14,7 @@ const Story = ({ img, username }) => {
           />
         </div>
       </div>
-      <p className="text-xs w-14 truncate text-center">{username}</p>
+      <p className="text-xs w-14 mt-1 truncate text-center dark:text-gray-300">{username}</p>
     </div>
   )
 }

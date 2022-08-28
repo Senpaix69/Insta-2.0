@@ -9,7 +9,7 @@ import {
 import { XCircleIcon } from '@heroicons/react/solid';
 import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid';
-import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc, getDoc } from 'firebase/firestore';
+import { addDoc, doc, collection, serverTimestamp, onSnapshot, query, orderBy, deleteDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Moment from 'react-moment';
@@ -71,7 +71,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
     }
 
     return (
-        <div className='bg-white border rounded-sm my-2 shadow-md'>
+        <div className='bg-white border rounded-sm my-2 shadow-md dark:bg-gray-900 dark:border-gray-800'>
             <div className='flex items-center py-2 px-[5px] shadow-md'>
                 <div className='relative rounded-full h-9 w-9 border mr-3 ml-2'>
                     <Image
@@ -81,15 +81,15 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                         src={userImg} alt='img' />
                     <span className="top-0 -right-1 absolute  w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
                 </div>
-                <p className='flex-1 font-bold'> {username} </p>
+                <p className='flex-1 font-bold dark:text-gray-200'> {username} </p>
                 <Moment fromNow className='mr-2 text-[10px] text-gray-400'>
                     {timeStamp?.toDate()}
                 </Moment>
                 {session?.user?.username === username ?
-                    <XCircleIcon className='w-8 h-8 text-gray-500 mr-3 cursor-pointer' onClick={deletePost} /> :
-                    <DotsHorizontalIcon className='btn pr-3' />}
+                    <XCircleIcon className='w-8 h-8 text-gray-500 mr-3 cursor-pointer dark:text-gray-200' onClick={deletePost} /> :
+                    <DotsHorizontalIcon className='btn pr-3 dark:text-gray-200' />}
             </div>
-            <div className='relative w-full h-[400px] md:h-[500px]'>
+            <div className='relative w-full h-[400px] md:h-[500px] bg-white'>
                 <Image
                     loading='eager'
                     layout='fill'
@@ -97,17 +97,17 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                     src={img} alt='cover' />
             </div>
 
-            <div className='flex justify-between px-4 pt-4'>
+            <div className='flex justify-between p-4 pt-4'>
                 <div className='flex space-x-4'>
                     {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
-                        : <HeartIcon onClick={likePost} className='btn' />}
-                    <ChatIcon className='btn' />
-                    <PaperAirplaneIcon className='btn pt-1 rotate-90' />
+                        : <HeartIcon onClick={likePost} className='btn dark:text-gray-200' />}
+                    <ChatIcon className='btn dark:text-gray-200' />
+                    <PaperAirplaneIcon className='btn pt-1 rotate-90 dark:text-gray-200' />
                 </div>
-                <BookmarkIcon className='btn' />
+                <BookmarkIcon className='btn dark:text-gray-200' />
             </div>
 
-            <p className='px-5 py-2 shadow-sm'>
+            <p className='px-5 py-2 shadow-sm dark:shadow-lg dark:text-gray-200'>
                 {likes.length > 0 && (
                     <span className='font-bold mb-1 flex'>{likes.length} {likes.length === 1 ? "like" : "likes"}</span>
                 )}
@@ -116,7 +116,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
             </p>
 
             {comments.length > 0 && (
-                <div className='ml-5 h-20 overflow-y-scroll scrollbar-thumb-gray-300 scrollbar-thin'>
+                <div className='pl-5 pt-1 h-20 overflow-y-scroll scrollbar-thumb-gray-300 scrollbar-thin dark:bg-gray-900 dark:text-gray-200'>
                     {comments.map((comment) => (
                         <div key={comment.id} className='flex items-center space-x-2 mb-3'>
                             <div className='relative h-7 w-7 rounded-full'>
@@ -142,8 +142,8 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
 
 
             <form className='flex items-center py-2 px-4'>
-                <EmojiHappyIcon className='h-7' />
-                <input value={comment} onChange={(e) => setComment(e.target.value)} className='border-none flex-1 outline-none focus:ring-0' placeholder='add a comment...' type='text' />
+                <EmojiHappyIcon className='h-7 dark:text-gray-200' />
+                <input value={comment} onChange={(e) => setComment(e.target.value)} className='border-none flex-1 outline-none focus:ring-0 dark:bg-transparent dark:placeholder:text-gray-400 dark:text-white' placeholder='add a comment...' type='text' />
                 <button type='submit' disabled={!comment.trim()} onClick={postComment} className='font-semibold text-blue-500 disabled:text-gray-400'>Post</button>
             </form>
         </div>
