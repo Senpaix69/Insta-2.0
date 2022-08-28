@@ -95,7 +95,10 @@ export default function Example({ session, setOpen, signOut, router, darkMode, s
                             </Menu.Item>}
                         <Menu.Item>
                             {({ active }) => (
-                                <button
+                                <a
+                                    href='https://senpaiprofile.surge.sh'
+                                    target='_blank'
+                                    rel='noreferrer'
                                     className={classNames(
                                         active ? 'dark:bg-gray-700 bg-gray-300 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-3 text-sm w-full dark:text-gray-200'
@@ -103,9 +106,9 @@ export default function Example({ session, setOpen, signOut, router, darkMode, s
                                 >
                                     <div className='flex'>
                                         <SparklesIcon className='h-5 w-5 mr-2 dark:text-gray-200' />
-                                        Support [Not Active]
+                                        Support
                                     </div>
-                                </button>
+                                </a>
                             )}
                         </Menu.Item>
                         {router.asPath !== '/Chats' &&
