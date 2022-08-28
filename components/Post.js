@@ -71,6 +71,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
     }
 
     return (
+        <div>
         <div className='bg-white border rounded-sm my-2 shadow-md dark:bg-gray-900 dark:border-gray-800'>
             <div className='flex items-center py-2 px-[5px] shadow-md'>
                 <div className='relative rounded-full h-9 w-9 border mr-3 ml-2'>
@@ -97,7 +98,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                     src={img} alt='cover' />
             </div>
 
-            <div className='flex justify-between p-4 pt-4'>
+            <div className='flex justify-between px-4 pt-4'>
                 <div className='flex space-x-4'>
                     {hasLike ? <HeartIconFilled onClick={likePost} className='btn text-red-500' />
                         : <HeartIcon onClick={likePost} className='btn dark:text-gray-200' />}
@@ -146,6 +147,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp }) => {
                 <input value={comment} onChange={(e) => setComment(e.target.value)} className='border-none flex-1 outline-none focus:ring-0 dark:bg-transparent dark:placeholder:text-gray-400 dark:text-white' placeholder='add a comment...' type='text' />
                 <button type='submit' disabled={!comment.trim()} onClick={postComment} className='font-semibold text-blue-500 disabled:text-gray-400'>Post</button>
             </form>
+        </div>
         </div>
     )
 }
