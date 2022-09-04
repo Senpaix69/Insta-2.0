@@ -137,7 +137,7 @@ const Chat = () => {
                                         </div>
                                         <p className={`${msg?.data().username === session?.user.username ? "mr-9 bg-green-200" : "ml-9 bg-blue-200"} p-2 rounded-lg`}>{msg?.data().text}
                                             {msg.data().image &&
-                                                <div className="relative border rounded-lg border-gray-400 shadow-md bg-white w-64 h-64 mt-2">
+                                                <div className="relative border border-gray-400 shadow-md bg-white w-64 h-64 mt-2">
                                                     <Image src={msg.data().image} alt='img' layout="fill" objectFit="scale-down" loading='eager' />
                                                 </div>}
                                             <Moment fromNow className="ml-2 text-[10px] text-gray-500">
