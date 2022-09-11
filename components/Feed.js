@@ -14,7 +14,7 @@ const Feed = () => {
       {session ? (
         <>
           <section className="col-span-2">
-            <div className="m-2 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+            <div className="m-2 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800">
               <span className="font-medium">Feed Updates!</span>
               <p>1: You can now post comments and reply to a comment</p>
               <p>2: You can delete comments and also delete you sub-comments</p>
@@ -26,7 +26,8 @@ const Feed = () => {
               <span className="font-medium">Chat Updates!</span>
               <p>1: You can now send images in chat</p>
               <p>2: You can now delete chat and unsend texts</p>
-              <span className="font-medium">Alert!</span> You can't follow/unfollow user for now
+              <span className="font-medium">Alert!</span> 
+              <span>You can't follow/unfollow user for now</span>
             </div>
             <Stories />
             <Posts />
