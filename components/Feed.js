@@ -15,18 +15,18 @@ const Feed = () => {
         <>
           <section className="col-span-2">
             <div className="m-2 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800">
-              <p className="text-md font-semibold">Feed Updates!</p>
+              <span className="font-medium">Feed Updates!</span>
               <p>1: You can now post comments and reply to a comment</p>
               <p>2: You can delete comments and also delete you sub-comments</p>
               <p>3: You can check which user has liked the posts</p>
-              <p className="text-md font-semibold">Profile Updates!</p>
+              <span className="font-medium">Profile Updates!</span>
               <p>1: You can check other users profile by clicking on usernames</p>
               <p>2: You can check your own profile</p>
               <p>3: You can modify you profile name and bio</p>
-              <p className="text-md font-semibold">Chat Updates!</p>
+              <span className="font-medium">Chat Updates!</span>
               <p>1: You can now send images in chat</p>
               <p>2: You can now delete chat and unsend texts</p>
-              <span className="text-md font-semibold">Alert!</span> <span>You can't follow/unfollow user for now</span>
+              <span className="font-medium">Alert!</span> You can not follow/unfollow user for now
             </div>
             <Stories />
             <Posts />
