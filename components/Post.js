@@ -136,7 +136,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp, router }) => {
                     </p>
 
                     {comments.length > 0 && (
-                        <button onClick={() => router.push(`comment/${id}`)} className='px-4 text-sm text-gray-500'>
+                        <button onClick={() => router.push(`comment/${id}`)} className='px-4 text-sm text-gray-400'>
                             View {comments.length} {comments.length === 1 ? "comment" : "comments"}
                         </button>
                     )}
