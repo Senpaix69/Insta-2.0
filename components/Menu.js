@@ -9,7 +9,7 @@ function classNames(...classes) {
 export default function Example({ session, setOpen, signOut, router, darkMode, setDarkMode }) {
 
     return (
-        <Menu as="div" className="relative inline-block text-left md:hidden pt-2">
+        <Menu as="div" className="relative inline-block text-left xl:hidden pt-2">
             <Menu.Button>
                 <img src={session?.user?.image} alt='Profile Pic' className="h-10 w-10 rounded-full cursor-pointer btn" />
             </Menu.Button>
