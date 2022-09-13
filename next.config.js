@@ -4,8 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['links.papareact.com', "lh3.googleusercontent.com",
-      'firebasestorage.googleapis.com', "cloudflare-ipfs.com", "cdn.pixabay.com",
-      "encrypted-tbn0.gstatic.com"]
+      'firebasestorage.googleapis.com', "cloudflare-ipfs.com", "cdn.pixabay.com"]
   }
 }
 
