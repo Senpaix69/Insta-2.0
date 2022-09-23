@@ -81,6 +81,7 @@ const Header = ({ darkMode, setDarkMode, showFollowers, showFollowings }) => {
               session={session}
               router={router}
               open={open}
+              setUserStatus={setActive}
             />
             <div className="xl:flex hidden items-center space-x-4 justify-end">
               <HomeIcon
