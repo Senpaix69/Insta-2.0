@@ -8,6 +8,8 @@ import {
   DownloadIcon,
 } from "@heroicons/react/outline";
 import { XCircleIcon } from "@heroicons/react/solid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import {
@@ -82,7 +84,15 @@ const Post = ({ id, username, userImg, img, caption, timeStamp, router }) => {
 
   const deletePost = async () => {
     if (confirm("Do you really want to delete this post?")) {
+      const load = toast.loading("deleting...", { position: "top-center" });
       await deleteDoc(doc(db, "posts", id));
+      toast.update(load, {
+        render: "Deleted Successfully 🙂",
+        position: "top-center",
+        type: "success",
+        isLoading: false,
+        autoClose: true,
+      });
     }
   };
 
@@ -233,6 +243,7 @@ const Post = ({ id, username, userImg, img, caption, timeStamp, router }) => {
           </button>
         </div>
       )}
+      <ToastContainer autoClose={2500} theme="dark" />
     </div>
   );
 };
