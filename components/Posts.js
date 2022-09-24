@@ -68,12 +68,12 @@ const Posts = ({ setTotalPosts, profile }) => {
 
   return (
     <div
-      className={`relative ${
+      className={`relative mb-14 ${
         router.asPath !== "/" && !view
           ? `grid ${
               posts?.length ? "grid-cols-3" : "grid-cols-1"
             } place-items-center md:flex md:flex-wrap p-3 justify-left`
-          : "mb-14"
+          : ""
       }`}
     >
       {posts === undefined ? (
