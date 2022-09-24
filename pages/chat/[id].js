@@ -4,7 +4,7 @@ import {
   MicrophoneIcon,
   PhotographIcon,
   XCircleIcon,
-  ArrowSmRightIcon,
+  ArrowRightIcon,
 } from "@heroicons/react/solid";
 import Moment from "react-moment";
 import Image from "next/image";
@@ -150,13 +150,16 @@ const Chat = () => {
 
           {/* Chat Body */}
           <section className="flex-1">
-            <div
-              className="m-2 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-              role="alert"
-            >
-              <span className="font-medium">Chat Alert!</span> You can
-              send/unsend text and images, have fun 😊.
-            </div>
+            {user?.bio && (
+              <div
+                className="flex items-center justify-around m-2 p-2 mb-4 text-sm text-center text-gray-700 bg-gray-800 rounded-lg dark:bg-gray-900 dark:text-slate-400"
+                role="alert"
+              >
+                <ArrowLeftIcon className="h-3 w-3" />
+                {user?.bio}
+                <ArrowRightIcon className="h-3 w-3" />
+              </div>
+            )}
             {user?.username ? (
               messages?.map((msg, i) => (
                 <div
@@ -300,8 +303,8 @@ const Chat = () => {
                     onClick={sendMessage}
                     disabled={text || selectFile ? false : true}
                   >
-                    <ArrowSmRightIcon
-                      className={`mr-2 h-9 w-9 cursor-pointer text-blue-500 ${
+                    <ArrowRightIcon
+                      className={`mr-2 h-7 w-7 cursor-pointer text-blue-500 ${
                         text || selectFile ? "text-blue-500" : "text-gray-500"
                       }`}
                     />
