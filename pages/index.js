@@ -70,10 +70,6 @@ export default function Home() {
     }
   }, [load]);
 
-  const sendNotification = () => {
-    initBeams("Push");
-  };
-
   return (
     <div
       className={`h-screen overflow-y-scroll scrollbar-hide ${
@@ -84,9 +80,6 @@ export default function Home() {
         <title>InstaPro</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <button className="h-10 w-full text-white" onClick={sendNotification}>
-        Send Notification
-      </button>
       {!loading && (
         <Header darkMode={darkMode} setDarkMode={setDarkMode} user={user} />
       )}

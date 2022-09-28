@@ -6,11 +6,11 @@ const initBeams = (uid, signOut) => {
   const beamsClient = new PusherPushNotifications.Client({
     instanceId: "e7843789-8f6e-4c23-86d2-14faddde20fe",
   });
-  const pushNotifications = new PushNotifications({
-    instanceId: "e7843789-8f6e-4c23-86d2-14faddde20fe",
-    secretKey:
-      "971CDA3FEF7ED98D8A949F7441BD30735EB6DB57254A8F5BE917A48CB6129243",
-  });
+  // const pushNotifications = new PushNotifications({
+  //   instanceId: "e7843789-8f6e-4c23-86d2-14faddde20fe",
+  //   secretKey:
+  //     "971CDA3FEF7ED98D8A949F7441BD30735EB6DB57254A8F5BE917A48CB6129243",
+  // });
   beamsClient
     .getRegistrationState()
     .then((state) => {
@@ -54,22 +54,22 @@ const initBeams = (uid, signOut) => {
                 console.error("Could not clear Beams state", e);
               });
           } else if (uid === "Push") {
-            console.log("Sending");
-            pushNotifications
-              .publishToInterests(["debug-100490208109736352301"], {
-                web: {
-                  notification: {
-                    title: "Senpai",
-                    body: "Hello, Boy!",
-                  },
-                },
-              })
-              .then((publishResponse) => {
-                console.log("Just published:", publishResponse.publishId);
-              })
-              .catch((error) => {
-                console.log("Error:", error);
-              });
+            // console.log("Sending");
+            // pushNotifications
+            //   .publishToInterests(["debug-100490208109736352301"], {
+            //     web: {
+            //       notification: {
+            //         title: "Senpai",
+            //         body: "Hello, Boy!",
+            //       },
+            //     },
+            //   })
+            //   .then((publishResponse) => {
+            //     console.log("Just published:", publishResponse.publishId);
+            //   })
+            //   .catch((error) => {
+            //     console.log("Error:", error);
+            //   });
           }
           break;
         }
