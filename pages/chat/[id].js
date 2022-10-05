@@ -397,6 +397,12 @@ const Chat = () => {
           </section>
         </div>
       </div>
+      <ToastContainer
+        autoClose={2500}
+        position={"top-center"}
+        theme="dark"
+        pauseOnFocusLoss={false}
+      />
     </div>
   );
 };
