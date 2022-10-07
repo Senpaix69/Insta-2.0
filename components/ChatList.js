@@ -50,16 +50,16 @@ const ChatList = ({ redirect, id, user, toast, visitor, axios }) => {
   };
 
   return (
-    <div className="relative mx-3 mt-1 shadow-sm rounded-md dark:shadow-gray-700">
+    <div className="relative mx-3 my-1">
       <button
-        className="absolute right-4 cursor-pointer bg-red-600 text-gray-200 text-sm font-semibold mt-2 px-2 py-[1.5px] rounded-lg shadow-sm dark:bg-opacity-90"
+        className="absolute right-2 cursor-pointer bg-red-600 text-gray-200 text-sm font-semibold mt-2 px-2 py-[1.5px] rounded-lg shadow-sm dark:bg-opacity-90"
         onClick={deleteChat}
       >
         delete
       </button>
       <div
         onClick={() => redirect(id)}
-        className="flex items-center justify-center w-full py-2 px-3 cursor-pointer truncate"
+        className="flex items-center justify-center w-full py-2 cursor-pointer truncate"
       >
         <div className="flex items-center justify-center p-[1px] rounded-full object-contain cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
           <div className="relative w-14 h-14">
@@ -83,7 +83,7 @@ const ChatList = ({ redirect, id, user, toast, visitor, axios }) => {
             ></span>
           </div>
         </div>
-        <div className="ml-3 w-full truncate">
+        <div className="ml-3 flex flex-col -space-y-2 w-full truncate">
           <div className="flex items-center">
             <h1 className="font-semibold -mt-1 h-[22px]">
               {currUser?.fullname}
