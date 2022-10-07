@@ -81,6 +81,8 @@ const Chats = () => {
               }
             });
           } else {
+            toast.dismiss(toastId.current);
+            toastId.current = null;
             toast.warn("User Not Found 😐");
           }
         } else {
