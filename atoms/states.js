@@ -35,11 +35,17 @@ const userActivity = atom({
   default: false,
 });
 
+const beamsState = atom({
+  key: "beamState",
+  default: false,
+});
+
 export {
   likesView,
   commentsView,
   modelState,
   postView,
+  beamsState,
   storyState,
   themeState,
   userActivity,
