@@ -25,6 +25,11 @@ const storyState = atom({
   default: false,
 });
 
+const watchStory = atom({
+  key: "watchStory",
+  default: false,
+});
+
 const themeState = atom({
   key: "theme",
   default: false,
@@ -44,6 +49,7 @@ export {
   likesView,
   commentsView,
   modelState,
+  watchStory,
   postView,
   beamsState,
   storyState,
