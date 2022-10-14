@@ -470,9 +470,9 @@ const Chat = () => {
                 <strong className="font-bold">
                   {id?.includes("group") ? "Description: " : "Bio: "}
                 </strong>
-                <p className="block sm:inline">
+                <span className="block sm:inline">
                   {chat?.description || user?.bio}
-                </p>
+                </span>
               </div>
             )}
             {newMessages?.length > 0 || messages ? (
