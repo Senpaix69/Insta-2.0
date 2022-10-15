@@ -26,7 +26,7 @@ import {
   getUserProfilePic,
 } from "../../utils/utilityFunctions";
 import { useRecoilState } from "recoil";
-import { themeState } from "../../atoms/states";
+import { themeState, userActivity } from "../../atoms/states";
 import sendPush from "../../utils/sendPush";
 import {
   UserAddIcon,
@@ -60,12 +60,26 @@ const Chat = () => {
   const [chat, setChat] = useState({});
   const you = getUser(session?.user.username, users);
   const [user, setUser] = useState({});
+  const [active, setActive] = useRecoilState(userActivity);
   const creator = getName(
     getUser(
       chat?.users?.filter((itr) => itr.creator === true)[0]?.username,
       users
     )
   );
+
+  useEffect(() => {
+    window.addEventListener("focus", () => setActive(true));
+    window.addEventListener("blur", () => setActive(false));
+    window.addEventListener("online", () => setActive(true));
+    window.addEventListener("offline", () => setActive(false));
+    return () => {
+      window.removeEventListener("focus", () => setActive(true));
+      window.removeEventListener("blur", () => setActive(false));
+      window.addEventListener("online", () => setActive(true));
+      window.addEventListener("offline", () => setActive(false));
+    };
+  }, []);
 
   useEffect(() => {
     let unsubChats;
@@ -98,20 +112,12 @@ const Chat = () => {
   useEffect(() => {
     let timeOut;
     if (messages) {
-      if (messages.length > newMessages.length) {
-        const revMsg = [];
-        for (let index in messages) {
-          revMsg.push(messages[messages.length - 1 - index]);
-        }
-        setNewMessages(revMsg);
-        if (noMoreMessages) setNoMoreMessages(false);
-        if (loadingNewMessages) setLoadingNewMessages(false);
-        console.log("Fetched");
-      } else {
-        console.log("no more messages");
-        if (!noMoreMessages) setNoMoreMessages(true);
-        timeOut = setTimeout(() => setScrollDown(true), 4000);
+      const revMsg = [];
+      for (let index in messages) {
+        revMsg.push(messages[messages.length - 1 - index]);
       }
+      setNewMessages(revMsg);
+      if (loadingNewMessages) setLoadingNewMessages(false);
     }
     return () => {
       if (timeOut) clearTimeout(timeOut);
@@ -122,7 +128,7 @@ const Chat = () => {
     if (chat.users && !id?.includes("group")) {
       setUser(getUser(getOtherEmail(chat, session?.user), users));
     }
-  }, [chat, id, messages?.length]);
+  }, [chat, id, users]);
 
   const sendMessage = async (e) => {
     setLim((prev) => prev + 1);
@@ -506,6 +512,7 @@ const Chat = () => {
             } flex-1 flex flex-col justify-end relative pb-2`}
           >
             <button
+              hidden={messages?.length > 0 ? false : true}
               disabled={loadingNewMessages}
               onClick={loadMoreMessages}
               className={`absolute top-14 w-full bg-transparent transition-opacity duration-700 text-gray-400 hover:text-blue-500 ${
