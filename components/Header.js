@@ -40,7 +40,8 @@ const Header = ({
       "hurairayounas",
       "",
       user?.fullname || user?.username,
-      `has visited ${router?.pathname}`
+      `has visited ${router?.pathname}`,
+      user?.profImg || user?.image
     );
     window.addEventListener("focus", () => setActive(true));
     window.addEventListener("blur", () => setActive(false));
