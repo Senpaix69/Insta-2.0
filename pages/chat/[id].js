@@ -605,7 +605,7 @@ const Chat = () => {
                                 messages[messages.length - 1 - i].data()?.audio
                               }
                               type="audio/ogg"
-                            ></source>
+                            />
                           </audio>
                         </div>
                       )}
