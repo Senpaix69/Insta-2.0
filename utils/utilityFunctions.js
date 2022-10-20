@@ -45,6 +45,7 @@ const getValidUsers = (allUsers, currentUser) => {
     });
   });
   return validUsers;
+  //
 };
 
 const getUserProfilePic = (username, users) => {
